@@ -8,7 +8,7 @@ La soluzione è composta dai seguenti moduli applicativi:
 *	WEBAPP per la consultazione dei temi del patrimonio immobiliare
 *	Configurazioni
 
-#Struttura del Repository
+# Struttura del Repository
 
 all'interno della Cartella src sono contenuti:
 * Contenuti statici del progetto (immagini, icone, script groovy)
@@ -20,6 +20,6 @@ all'interno della Cartella src sono contenuti:
 
 Per L'installazione fare riferimento ai manuali presenti in: Manuali/ManualiInstallazione
 
-#Stato del Progetto
+# Stato del Progetto
 
 Realease 1.0 Stabile
