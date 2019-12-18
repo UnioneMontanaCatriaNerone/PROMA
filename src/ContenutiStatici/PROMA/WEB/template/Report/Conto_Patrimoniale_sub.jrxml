@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="conto_patrimoniale" pageWidth="680" pageHeight="800" orientation="Landscape" columnWidth="640" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a9ef291-aa40-47e2-abbd-d4f985614cfc">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style_time" forecolor="#FFCC00">
+		<conditionalStyle>
+			<conditionExpression><![CDATA["In corso".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#FF0000" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["Completato".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#33CC00" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="logo" class="java.lang.Object" isForPrompting="false"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["\\\\winprot\\c$\\projects\\pri_prot\\WEB\\template\\Report\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cod_building" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select * from view_rep_pma_building_count
+where cod_building=$P{cod_building}]]>
+	</queryString>
+	<field name="cod_site" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="descr_building" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="locality" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="valore_stima" class="java.math.BigDecimal"/>
+	<field name="data_stima" class="java.sql.Timestamp"/>
+	<field name="num_urb_rv" class="java.lang.Long"/>
+	<field name="val_urb_rv" class="java.lang.Double"/>
+	<field name="num_urb_omi" class="java.lang.Long"/>
+	<field name="val_urb_omi" class="java.lang.Double"/>
+	<field name="num_ter_vag" class="java.lang.Long"/>
+	<field name="val_ter_vag" class="java.lang.Double"/>
+	<field name="num_ter_rd" class="java.lang.Long"/>
+	<field name="val_ter_rd" class="java.lang.Double"/>
+	<field name="valore_tipo" class="java.lang.String"/>
+	<field name="stato_cons" class="java.lang.String"/>
+	<field name="name_building" class="java.lang.String"/>
+	<field name="id_building" class="java.lang.String"/>
+	<field name="cod_company" class="java.lang.String"/>
+	<field name="type_ownership" class="java.lang.String"/>
+	<field name="type_expertise" class="java.lang.String"/>
+	<field name="purchase_date" class="java.sql.Timestamp"/>
+	<field name="purchase_value" class="java.math.BigDecimal"/>
+	<field name="anno_costr" class="java.lang.String"/>
+	<variable name="val_base_cat" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{val_urb_rv}+$F{val_ter_rd}]]></variableExpression>
+	</variable>
+	<variable name="val_base_omi" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{val_urb_omi}+$F{val_ter_vag}]]></variableExpression>
+	</variable>
+	<group name="Group">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<pageHeader>
+		<band height="48">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="640" height="39" forecolor="#FFFFFF" backcolor="#024885" uuid="e216e50e-609d-43d0-8ff8-e7f95a8f718f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTO PATRIMONIALE ENTITA' PATRIMONIALE "+ $F{cod_building}+" - "+$F{name_building}+" - "+$F{descr_building}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="82" splitType="Stretch">
+			<textField hyperlinkType="Reference">
+				<reportElement x="80" y="0" width="130" height="20" uuid="b412ed94-18b7-4510-ab2c-36aeb04ef884"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript:var tabWidgetType = 'gwClassList'; var className = 'Ril_Pod'; var tabName = className; var tabWidgetId =tabWidgetType+'_'+tabName+'_tab'; var tabWidgetTitle = 'Elenco POD fornitura Centralizzata'; var parametersMap = {className: className,staticFilters: { condition: 'AND', columnName: 'tipo_fornitura', operator: '=', filterType: 'STRING', value: ['Centralizzata'] } };openTab(tabWidgetId, tabWidgetType, tabWidgetTitle, parametersMap);"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="290" y="0" width="130" height="20" uuid="00052d89-9086-44a5-9f3a-bb7412d31ea2"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{locality}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript:var tabWidgetType = 'gwClassList'; var className = 'Ril_Pod'; var tabName = className; var tabWidgetId =tabWidgetType+'_'+tabName+'_tab'; var tabWidgetTitle = 'titolo scheda'; var parametersMap = {className: className,staticFilters: { condition: 'AND', columnName: 'tipo_fornitura', operator: '=', filterType: 'STRING', value: ['Singola'] } };openTab(tabWidgetId, tabWidgetType, tabWidgetTitle, parametersMap);"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference" hyperlinkTarget="Blank">
+				<reportElement x="500" y="0" width="140" height="20" uuid="24e409cf-8fca-47d4-9e1b-cb9d865fd4f7"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+				<hyperlinkTooltipExpression><![CDATA["www.google.it"]]></hyperlinkTooltipExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="31" width="220" height="20" forecolor="#FFFFFF" backcolor="#457AA9" uuid="c515d48f-ef96-443f-b2b7-505e22773e2f"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data di acquisto]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="0" y="51" width="220" height="20" uuid="18bbb004-e905-449a-93d6-ee22af442e67"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purchase_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="d6628927-7281-45b5-962b-eec594f99131"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comune]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="210" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="4af1606a-884a-4b94-9c21-d42890da7af1"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Località]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="420" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="5700b0ea-9f2b-4cda-8733-f8cd5a7fd3d6"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indirizzo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="31" width="220" height="20" forecolor="#FFFFFF" backcolor="#457AA9" uuid="28c94659-3d23-44e8-aa4f-b782168166bd"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valore di acquisto]]></text>
+			</staticText>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="220" y="51" width="220" height="20" uuid="4f92c7a3-6d8c-4e63-b145-3c9e3ce8a703"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purchase_value}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="31" width="200" height="20" forecolor="#FFFFFF" backcolor="#457AA9" uuid="ad94d6e0-3d42-4e79-8a62-babe2554f02e"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Anno di realizzazione]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="440" y="51" width="200" height="20" uuid="8f8fb2f0-fb29-4eb3-a780-b7c12471c7bd"/>
+				<box>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anno_costr}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="77" width="640" height="1" forecolor="#024885" uuid="3731ca70-5252-4c86-9e81-000f719d48d5"/>
+			</line>
+		</band>
+		<band height="98">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="640" height="32" forecolor="#FFFFFF" backcolor="#024885" uuid="3ff65f68-7078-47a6-a7ef-a8a29266c4aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORE MANUFATTO DA PERIZIA / STIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="44" width="220" height="20" forecolor="#FFFFFF" backcolor="#457AA9" uuid="94d07707-00a1-4967-88a2-2bf88b01e07f"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data stima / perizia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="44" width="200" height="20" forecolor="#FFFFFF" backcolor="#457AA9" uuid="70831639-123e-443d-8929-58e21b0f26d4"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valore]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="44" width="220" height="20" forecolor="#FFFFFF" backcolor="#457AA9" uuid="88a04150-6d84-41de-aa05-36998e01f907"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipologia di stima]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="0" y="64" width="220" height="20" uuid="1212f61f-32b1-4ace-8a93-fef2cfa27d69"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_stima}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript:var tabWidgetType = 'gwClassList'; var className = 'Ril_Pod'; var tabName = className; var tabWidgetId =tabWidgetType+'_'+tabName+'_tab'; var tabWidgetTitle = 'Elenco POD fornitura Centralizzata'; var parametersMap = {className: className,staticFilters: { condition: 'AND', columnName: 'tipo_fornitura', operator: '=', filterType: 'STRING', value: ['Centralizzata'] } };openTab(tabWidgetId, tabWidgetType, tabWidgetTitle, parametersMap);"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="220" y="64" width="220" height="20" uuid="c1037b66-5b99-465c-825e-44860476bbf1"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{type_expertise}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript:var tabWidgetType = 'gwClassList'; var className = 'Ril_Pod'; var tabName = className; var tabWidgetId =tabWidgetType+'_'+tabName+'_tab'; var tabWidgetTitle = 'Elenco POD fornitura Centralizzata'; var parametersMap = {className: className,staticFilters: { condition: 'AND', columnName: 'tipo_fornitura', operator: '=', filterType: 'STRING', value: ['Centralizzata'] } };openTab(tabWidgetId, tabWidgetType, tabWidgetTitle, parametersMap);"]]></hyperlinkReferenceExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="91" width="640" height="1" forecolor="#024885" uuid="f63e560d-6a2d-4612-a671-129bdf48cc48"/>
+			</line>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="440" y="64" width="200" height="20" uuid="5310544c-ea00-484f-82ca-493c6d8a17ad"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valore_stima}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="92">
+			<subreport>
+				<reportElement x="0" y="32" width="640" height="60" isRemoveLineWhenBlank="true" uuid="c9d91048-993e-418b-896b-eb849c94f095"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "/CP_riv_ui_sub.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="640" height="32" forecolor="#FFFFFF" backcolor="#024885" uuid="79d0936b-e0bd-4037-9b85-1841d4fbc4c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORE CATASTALE MANUFATTO]]></text>
+			</staticText>
+		</band>
+		<band height="65">
+			<subreport>
+				<reportElement x="0" y="0" width="640" height="60" isRemoveLineWhenBlank="true" uuid="18180e74-298a-49ca-9c9c-4d0853a27b32"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "/CP_rd_ter_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="93">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="640" height="32" forecolor="#FFFFFF" backcolor="#024885" uuid="ef680827-a24c-4b10-afc1-63d089e350fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORE MANUFATTO DA QUOTAZIONI O.M.I.]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="33" width="640" height="60" isRemoveLineWhenBlank="true" uuid="db7f30f1-41fd-4ba2-a5b9-222dced7a670"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "/CP_omi_ui_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="60">
+			<subreport>
+				<reportElement x="0" y="0" width="640" height="60" isRemoveLineWhenBlank="true" uuid="79f1fdfe-7546-42b7-b3df-fddf7ea4c731"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "/CP_vag_ter_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="8" width="640" height="32" forecolor="#FFFFFF" backcolor="#024885" uuid="7143ac0a-37cb-42e5-9529-a2c0616e93ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTO PATRIMONIALE]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="40" width="640" height="60" isRemoveLineWhenBlank="true" uuid="26325bf5-44ae-4c22-ba80-d158e4b18130"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "/CP_BUIL_VAL.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

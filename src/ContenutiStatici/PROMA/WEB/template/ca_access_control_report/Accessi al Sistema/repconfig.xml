@@ -1,0 +1,9 @@
+<staticReportInfo>
+  <name>Accessi al Sistema</name>
+  <description>elenco degli accessi utenti al sistema</description>
+  <type>xls</type>
+  <mainReport>ca_geow_users_login_list.jasper</mainReport>
+  <resources>
+    <null/>
+  </resources>
+</staticReportInfo>

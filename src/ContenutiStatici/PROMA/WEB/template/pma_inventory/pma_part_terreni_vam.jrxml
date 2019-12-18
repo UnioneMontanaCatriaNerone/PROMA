@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pma_part_terreni_vam" language="groovy" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3bd2bc22-605a-41bd-b274-5be62dd3d09d">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod_building" class="java.lang.String" isForPrompting="false">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_pri_part_terreni" class="java.lang.Integer" isForPrompting="false">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pma_dati_gw.view_pma_val_part_terreni where id_pri_part_terreni=$P{id_pri_part_terreni}]]>
+	</queryString>
+	<field name="id_val_part_terreni" class="java.math.BigDecimal"/>
+	<field name="id_pri_part_terreni" class="java.math.BigDecimal"/>
+	<field name="id_terreni_valori" class="java.math.BigDecimal"/>
+	<field name="superficie" class="java.lang.Double"/>
+	<field name="ettari" class="java.lang.Double"/>
+	<field name="id_comuni" class="java.lang.String"/>
+	<field name="coltura" class="java.lang.String"/>
+	<field name="reg_agraria" class="java.math.BigDecimal"/>
+	<field name="descr_reg_agraria" class="java.lang.String"/>
+	<field name="val_agricolo" class="java.math.BigDecimal"/>
+	<field name="anno" class="java.lang.Long"/>
+	<field name="valore_terreno" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="22" forecolor="#FFFFFF" backcolor="#024885" uuid="b2e1b18f-6099-477d-8f34-09d2e0766728"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Valorizzazione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="22" width="57" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="7ddcd06a-fd84-466c-8259-d398f707469a"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Anno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="57" y="22" width="175" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="60807d13-2839-484c-89a0-58cd853adfd5"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Regione agraria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="409" y="22" width="60" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="07f0f867-86ed-443b-b2bc-8837d6d46590"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Ettari]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="469" y="22" width="86" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="3a11df8e-f61b-493c-bab2-9edf735384ba"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Valore terreno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="232" y="22" width="177" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="cf775c2d-e972-4ecc-86d6-5fbaaa2557fd"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Coltura]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="57" height="20" uuid="9ef30304-769f-4668-b531-09ec2f7dc31e"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="57" y="0" width="175" height="20" uuid="0646a06a-0b31-4ce8-8355-1e837bb0e52e"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_reg_agraria}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="0" width="177" height="20" uuid="e9e06d00-4f09-4ea2-be38-75d9be939118"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{coltura}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="409" y="0" width="60" height="20" uuid="a5f77864-f51a-4e0d-a8da-e77c75b39598"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ettari}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="469" y="0" width="86" height="20" uuid="1b3b264f-b6b0-402c-b6a3-397fcfb4ebb3"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valore_terreno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

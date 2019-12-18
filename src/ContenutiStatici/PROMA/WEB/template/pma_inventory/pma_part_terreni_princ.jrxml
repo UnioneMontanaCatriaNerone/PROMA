@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pri_part_terreni" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="332416fe-9d37-44a0-9064-1ec36ec8adf0">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="7"/>
+	<parameter name="cod_building" class="java.lang.String" isForPrompting="false">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select id_pri_part_terreni from pma_dati_gw.pma_part_terreni]]>
+	</queryString>
+	<field name="id_pri_part_terreni" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="597" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="595" height="597" uuid="740b391a-6b35-4417-8af6-7bc7080a4062"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="id_pri_part_terreni">
+					<subreportParameterExpression><![CDATA[$F{id_pri_part_terreni}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_part_terreni.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

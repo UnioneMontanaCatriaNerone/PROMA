@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RPT-PEM-DB-001_compliance_verification_dashboard" language="groovy" pageWidth="915" pageHeight="800" orientation="Landscape" columnWidth="915" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7cf9b5a3-f2d4-493b-86e8-f1582550087d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="RPT-PEM-DB-001_title" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="RPT-PEM-DB-001_subtitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Z:\\template\\rep_pma_building_total\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM PMA_DATI_GW.view_rep_pma_building_total]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="conta_tot" class="java.lang.Integer"/>
+	<field name="conta_edi" class="java.lang.Integer"/>
+	<field name="conta_inf" class="java.lang.Integer"/>
+	<field name="conta_ter" class="java.lang.Integer"/>
+	<title>
+		<band height="351" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="203" y="92" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="c8608d89-ab25-44d7-8933-48fadb927e62"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TOTALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="303" y="45" width="298" height="40" forecolor="#FFFFFF" backcolor="#024885" uuid="effe794d-06a1-42cc-925e-00f3980b6e1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Tipo immobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="501" y="92" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="d810bf29-0eb6-4d87-8e7b-5dead67e3095"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Terreni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="403" y="92" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="5cc00404-9983-4d4b-8be4-7649c3da9177"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Infrastrutture]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="303" y="92" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="9ae87092-8f42-4161-b678-3927034a8359"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edifici]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="203" y="112" width="100" height="60" forecolor="#666666" uuid="be825f21-102f-4a84-8e49-74793f5a8f5e"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#333333"/>
+					<topPen lineWidth="0.0" lineColor="#333333"/>
+					<leftPen lineWidth="0.0" lineColor="#333333"/>
+					<bottomPen lineWidth="0.0" lineColor="#333333"/>
+					<rightPen lineWidth="0.0" lineColor="#333333"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta_tot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="353" y="112" width="50" height="60" forecolor="#666666" uuid="8f5178ad-1017-4d54-98df-36cd77393278"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta_edi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="112" width="50" height="60" forecolor="#666666" uuid="fd0dc257-5999-45f8-9ba3-e1e3a734ab07"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta_inf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="551" y="112" width="50" height="60" forecolor="#666666" uuid="abecbf98-c743-408c-90cd-05a0d35bc93b"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta_ter}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="303" y="112" width="50" height="60" uuid="1d79bcb4-9e01-47a0-b426-1d94c2f052d7"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//building.png"]]></imageExpression>
+			</image>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="403" y="112" width="50" height="60" uuid="11d8439f-e843-4897-ad34-921cdb495fdd"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//infrastructure.png"]]></imageExpression>
+			</image>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="501" y="112" width="50" height="60" uuid="4dd7666c-455f-47cf-bed5-de71462282ee"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//terrain.png"]]></imageExpression>
+			</image>
+			<subreport>
+				<reportElement x="0" y="228" width="600" height="45" uuid="c550d45b-9c37-4cd0-97f0-9ab581e87ba1"/>
+				<subreportParameter name="codice_polo"/>
+				<subreportParameter name="SUBREPORT_URL"/>
+				<subreportParameter name="SUBREPORT_CONN"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_building_total_pole.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="183" width="600" height="45" uuid="d76268d5-0173-43c8-aa4e-4a581e1c5555"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_building_total_italia.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="1" y="283" width="600" height="20" uuid="114d7865-4c46-433b-ac69-fb2033bca0fe"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_building_total_est.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="1" y="303" width="600" height="45" uuid="e83b9cd1-8bd2-44d6-9993-9d4a6e54a0ef"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_building_pole_est.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="615" y="45" width="300" height="125" uuid="d9ade900-192a-4969-bdf9-0feb0685b2c5"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_building_reptotal_property.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="915" height="35" forecolor="#FFFFFF" backcolor="#024885" uuid="947addb3-039a-4787-a6ca-80b843c45b92"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NUMERO E DISTRIBUZIONE IMMOBILI ATTIVI ]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="615" y="183" width="300" height="45" uuid="bfb30b1f-1eb1-4d9b-891a-68d1a9815cca"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_reptotal_property_italia.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="615" y="228" width="300" height="45" uuid="c182329e-13a9-426d-a536-e58ce75b628b"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_property_italia.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="615" y="283" width="300" height="20" uuid="4619afd8-c120-479e-822c-acd229b37545"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_reptotal_property_est.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="615" y="303" width="300" height="45" uuid="e024d027-058f-42df-8ae7-2931b6092718"/>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "//rep_pma_property_est.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+</jasperReport>

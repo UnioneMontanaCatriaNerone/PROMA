@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="conto_patrimoniale" pageWidth="680" pageHeight="800" orientation="Landscape" columnWidth="680" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1a9ef291-aa40-47e2-abbd-d4f985614cfc">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="11"/>
+	<style name="style_time" forecolor="#FFCC00">
+		<conditionalStyle>
+			<conditionExpression><![CDATA["In corso".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#FF0000" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["Completato".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#33CC00" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="logo" class="java.lang.Object" isForPrompting="false"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["\\\\winprot\\c$\\projects\\pri_prot\\WEB\\template\\Report\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select id_building,cod_building from pma_building]]>
+	</queryString>
+	<field name="id_building" class="java.lang.Integer"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<group name="Group">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<detail>
+		<band height="800" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="680" height="800" uuid="18180e74-298a-49ca-9c9c-4d0853a27b32"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "/Conto_Patrimoniale_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

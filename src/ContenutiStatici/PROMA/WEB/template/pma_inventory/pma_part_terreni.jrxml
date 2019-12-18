@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pma_part_terreni" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="332416fe-9d37-44a0-9064-1ec36ec8adf0">
+	<property name="ireport.zoom" value="1.7715610000000015"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="219"/>
+	<parameter name="cod_building" class="java.lang.String" isForPrompting="false">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_pri_part_terreni" class="java.lang.Integer">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pma_dati_gw.pma_part_terreni where id_pri_part_terreni=$P{id_pri_part_terreni}]]>
+	</queryString>
+	<field name="id_pri_part_terreni" class="java.lang.Integer"/>
+	<field name="foglio" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="partita" class="java.lang.String"/>
+	<field name="zona" class="java.lang.String"/>
+	<field name="qualita" class="java.lang.String"/>
+	<field name="classe" class="java.lang.String"/>
+	<field name="superficie" class="java.lang.Double"/>
+	<field name="reddito_dominicale" class="java.lang.Double"/>
+	<field name="reddito_agrario" class="java.lang.Double"/>
+	<field name="annotazioni" class="java.lang.String"/>
+	<field name="id_comuni" class="java.lang.String"/>
+	<field name="tipo_coltura" class="java.lang.String"/>
+	<field name="descr_comune_record" class="java.lang.String"/>
+	<field name="uk_particella" class="java.lang.String"/>
+	<field name="uk_cat_particella" class="java.lang.String"/>
+	<field name="cod_prop_ent" class="java.lang.String"/>
+	<field name="note" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="30" forecolor="#FFFFFF" backcolor="#024885" uuid="b2329dfa-3647-460a-bc1f-29bdd76dce8b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ANAGRAFICA CATASTO TERRENI]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="297" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="6" width="555" height="22" forecolor="#FFFFFF" backcolor="#024885" uuid="90ebacc4-b9ec-49aa-87fd-8790cf760465"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Dati Identificativi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="90" width="77" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="fc022e1a-8896-4bb3-8034-e524641595ec"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Foglio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="110" width="77" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="ef9f2eaf-986a-4f19-bd7b-fb9e4a853f93"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Particella:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="77" y="110" width="478" height="20" uuid="16d0b593-2b19-44a3-bf8c-ede1abcc21c6"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="177" width="108" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="35069e7b-aa68-4b30-96a6-fc2abee77522"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Qualità:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="70" width="555" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="78101d4e-d23b-4cb2-b987-ac640631394d"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Estremi catastali]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="108" y="177" width="447" height="20" uuid="c0ad4e2f-c069-42c6-a18a-f31107011b6c"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qualita}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="77" y="90" width="478" height="20" uuid="d887885b-23cc-4361-834f-736185b465f8"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{foglio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="77" y="130" width="478" height="20" uuid="d105e22d-3655-47c7-8a33-ed1f1125c8e2"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{partita}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="130" width="77" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="b57cf4ff-3df4-4995-b534-2588632f7a9e"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Partita:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="197" width="108" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="e7016bc1-8330-4d30-95b4-5e872bfa5dfa"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Classe:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="108" y="197" width="447" height="20" uuid="4ee12e52-85e5-4f6e-8bc9-48383638dbd3"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="155" width="555" height="22" forecolor="#FFFFFF" backcolor="#024885" uuid="52d16ea9-34cb-4a1f-8262-cc051bbb67fe"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Dati qualitativi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="217" width="108" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="461f073c-e803-4cdd-9b48-4c7af16d94ec"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Superficie:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="108" y="217" width="447" height="20" uuid="9c531e5f-af42-483c-a011-290668ee2fc7"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{superficie}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="108" y="237" width="447" height="20" uuid="e5dc58b2-1dc1-4c9d-97b9-0f601e7337f9"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reddito_dominicale}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="237" width="108" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="83cabec9-aeaf-48e7-a226-1b4bfc5fbe22"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reddito Dominicale:]]></text>
+			</staticText>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="108" y="257" width="447" height="20" uuid="bb6319eb-169f-47c7-b6bf-29e8d71bdc50"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reddito_agrario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="257" width="108" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="17ce530d-218d-4327-90d1-5c1a1bb3435a"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reddito Agrario:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="108" y="277" width="447" height="20" uuid="bb28fd28-f8d3-416e-b88c-e35e0de8253e"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{note}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="277" width="108" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="4eca6363-8241-4d7d-92f4-b3b604fe8ba3"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Note:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="28" width="555" height="40" uuid="740b391a-6b35-4417-8af6-7bc7080a4062"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_part_terreni_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="40" uuid="7df53c76-d5fb-4d4a-af20-5b73237c5294"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_building">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_part_terreni_vam.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

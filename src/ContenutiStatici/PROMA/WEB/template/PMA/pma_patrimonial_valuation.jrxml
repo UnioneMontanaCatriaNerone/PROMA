@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Confornto Conto Patrimoniale tra anni" pageWidth="651" pageHeight="595" orientation="Landscape" columnWidth="651" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="534eb450-3e5e-4c8b-87e4-bcfd110bf28f">
+	<property name="ireport.zoom" value="1.464100000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Anno_Iniziale" class="java.lang.Integer">
+		<parameterDescription><![CDATA[(yyyy)]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Anno_Finale" class="java.lang.Integer">
+		<parameterDescription><![CDATA[(yyyy)]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+   year
+FROM
+     pma_dati_gw.pma_patrimonial_valuation]]>
+	</queryString>
+	<field name="year" class="java.lang.String"/>
+	<group name="ANNO">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="48" width="651" height="15" forecolor="#FFFFFF" backcolor="#024885" uuid="8c2a44e2-bd19-4589-b7fe-2841fed5c66b"/>
+				<box>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[             ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="651" height="33" forecolor="#FFFFFF" backcolor="#024885" uuid="20a537b5-ddfe-42fc-acc2-1c70ae384c7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONFRONTI CONTO PATRIMONIALE]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="57" y="48" width="111" height="15" forecolor="#FFFFFF" backcolor="#024885" uuid="25dc3953-1584-49d7-b443-4e7ca2f88cc7"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dal "+$P{Anno_Iniziale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="481" y="48" width="114" height="15" forecolor="#FFFFFF" backcolor="#024885" uuid="4e752f13-e887-442b-bdeb-146907bc63e4"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Al "+$P{Anno_Finale}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="341">
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="57" y="0" width="538" height="341" uuid="7bbd5f1b-cf27-4a20-b28e-b30588c9429e"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Anno_Finale">
+					<subreportParameterExpression><![CDATA[$P{Anno_Finale}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Anno_Iniziale">
+					<subreportParameterExpression><![CDATA[$P{Anno_Iniziale}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL} + "/pma_patrimonial_valuation_sub1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

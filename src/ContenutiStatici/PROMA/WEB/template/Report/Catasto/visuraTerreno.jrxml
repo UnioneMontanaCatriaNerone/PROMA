@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="visuraTerrenoNew" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="32639d91-391c-4e1c-9667-2d010ef4e329">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Report/Catasto"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COMUNE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G148"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COMUNI" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G478"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from city4_data.cat_cens_terreni]]>
+	</queryString>
+	<field name="pk_particella" class="java.lang.String"/>
+	<field name="fk_comuni" class="java.lang.String"/>
+	<field name="codice_titolarita" class="java.lang.String"/>
+	<field name="partita" class="java.lang.String"/>
+	<field name="foglio" class="java.math.BigDecimal"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="subalterno" class="java.lang.String"/>
+	<field name="ettari" class="java.math.BigDecimal"/>
+	<field name="are" class="java.math.BigDecimal"/>
+	<field name="centiare" class="java.math.BigDecimal"/>
+	<field name="classe" class="java.lang.String"/>
+	<field name="reddito_dominicale" class="java.math.BigDecimal"/>
+	<field name="reddito_agrario" class="java.math.BigDecimal"/>
+	<field name="descr_qualita" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="313" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" mode="Opaque" x="0" y="0" width="782" height="313" forecolor="#000000" backcolor="#FFFFFF" uuid="9918b0b9-84e9-4dab-a0c5-bf7b695e468d"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="codice_titolarita">
+					<subreportParameterExpression><![CDATA[$F{codice_titolarita}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="COMUNI">
+					<subreportParameterExpression><![CDATA[$P{COMUNI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="COMUNE">
+					<subreportParameterExpression><![CDATA[$P{COMUNE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/visuraTerrenoNew.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

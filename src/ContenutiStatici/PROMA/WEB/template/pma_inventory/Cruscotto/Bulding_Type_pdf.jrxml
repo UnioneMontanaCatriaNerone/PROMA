@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Stato rilievo" pageWidth="677" pageHeight="200" orientation="Landscape" columnWidth="637" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="1a9ef291-aa40-47e2-abbd-d4f985614cfc">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style_time" forecolor="#FFCC00">
+		<conditionalStyle>
+			<conditionExpression><![CDATA["In corso".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#FF0000" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["Completato".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#33CC00" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from view_rep_pri_building order by descr_building_type,city,cod_building]]>
+	</queryString>
+	<field name="id_building" class="java.lang.Long"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="descr_building" class="java.lang.String"/>
+	<field name="geometry" class="java.lang.Object"/>
+	<field name="cod_site" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="name_building" class="java.lang.String"/>
+	<field name="cod_type_building" class="java.lang.String"/>
+	<field name="status_building" class="java.lang.String"/>
+	<field name="photo_name" class="java.lang.String"/>
+	<field name="photo_blob" class="java.lang.Object">
+		<fieldDescription><![CDATA[file della foto principale]]></fieldDescription>
+	</field>
+	<field name="photo_ctype" class="java.lang.String"/>
+	<field name="city" class="java.lang.String">
+		<fieldDescription><![CDATA[comune di ubicazione del site]]></fieldDescription>
+	</field>
+	<field name="locality" class="java.lang.String">
+		<fieldDescription><![CDATA[località o frazione di ubicazione del site]]></fieldDescription>
+	</field>
+	<field name="zip_code" class="java.lang.String">
+		<fieldDescription><![CDATA[codice di avviamento postale del site]]></fieldDescription>
+	</field>
+	<field name="country" class="java.lang.String">
+		<fieldDescription><![CDATA[nazione di ubicazione del site]]></fieldDescription>
+	</field>
+	<field name="district" class="java.lang.String">
+		<fieldDescription><![CDATA[regione / provincia di ubicazione del site]]></fieldDescription>
+	</field>
+	<field name="descr_building_type" class="java.lang.String"/>
+	<field name="address_site" class="java.lang.String"/>
+	<field name="cod_maintenance_plan" class="java.lang.String"/>
+	<field name="id_site" class="java.lang.Integer"/>
+	<field name="descr_company" class="java.lang.String"/>
+	<group name="Company">
+		<groupExpression><![CDATA[$F{descr_company}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="0" y="0" width="637" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="4c97291e-3e56-4372-81f7-39ab570ee87e"/>
+					<box leftPadding="5">
+						<topPen lineWidth="0.25" lineColor="#999999"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descr_company}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Type_Building">
+		<groupExpression><![CDATA[$F{descr_building_type}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="0" y="0" width="637" height="20" backcolor="#CCCCCC" uuid="6ff8c78c-78f4-4f58-ad87-abce44891bd8"/>
+					<box leftPadding="5">
+						<topPen lineWidth="0.25" lineColor="#999999"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="true"/>
+						<paragraph leftIndent="15"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descr_building_type}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="637" height="30" forecolor="#FFFFFF" backcolor="#024885" uuid="3a43b96a-5831-43df-9525-b1c48c924e6a"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ELENCO EDIFICI PER PROPRIETARIO E TIPOLOGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="214" y="30" width="134" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="e640be70-e2c1-4cf1-9686-a01c2c6170a3"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codice Edificio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="348" y="30" width="150" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="23d10b4e-c7b1-4843-917e-a0383d3fc61e"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Denominazione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="111" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="1b4dd564-15ec-4fae-a381-f00072cef94a"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comune]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="30" width="103" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="3cc454e3-7f44-4ffc-99be-bebb5f3c0469"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indirizzo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="498" y="30" width="139" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="4af1606a-884a-4b94-9c21-d42890da7af1"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codice Sito]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="214" y="0" width="134" height="20" uuid="54fb77c6-2c85-4e40-8776-4b521b7a18ff"/>
+				<box>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_building}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="348" y="0" width="150" height="20" uuid="085e5505-078e-46c4-a0d6-cb750b431d49"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_building}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="498" y="0" width="139" height="20" uuid="00052d89-9086-44a5-9f3a-bb7412d31ea2"/>
+				<box>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_site}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="0" y="0" width="111" height="20" uuid="9a11d27d-5211-4310-8a66-13a6aa90bcad"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA[]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA[]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="111" y="0" width="103" height="20" uuid="688229ad-7c8b-4b74-9c8d-7fd6774c7cd0"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA[]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA[]]></hyperlinkTooltipExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

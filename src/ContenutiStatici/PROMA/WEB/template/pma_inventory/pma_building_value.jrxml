@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pri_building_value" language="groovy" printOrder="Horizontal" pageWidth="555" pageHeight="842" whenNoDataType="BlankPage" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="39d0bd37-4fa2-47c7-bb79-16f809d329dd">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COD_BUILDING" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from  pma_dati_gw.pma_building_value where cod_building=$P{COD_BUILDING}]]>
+	</queryString>
+	<field name="id_building_value" class="java.lang.Integer"/>
+	<field name="internal_area" class="java.math.BigDecimal"/>
+	<field name="external_area" class="java.math.BigDecimal"/>
+	<field name="value_building" class="java.math.BigDecimal"/>
+	<field name="value_date" class="java.sql.Timestamp"/>
+	<field name="value_type" class="java.lang.String"/>
+	<field name="maintenance_status" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="id_site" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="47">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="22" forecolor="#FFFFFF" backcolor="#024885" uuid="0f0ed91e-8fa4-4546-a032-ba1c2880bd68"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Cronologia Migliorie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="86" y="22" width="358" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="2b31ce5a-5b92-44bf-9178-400a453f431b"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Tipologia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="22" width="111" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="dc58d7ba-ae86-4d6c-a817-5312276a4f3d"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Valore (€)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="22" width="86" height="25" forecolor="#000000" backcolor="#CCCCCC" uuid="e84aaf8b-a0c6-4280-84b8-545e0f8d2559"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Data riferimento]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="86" height="15" uuid="d4592fa8-b871-4f0c-8b49-27ee43bc3877"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{value_date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="86" y="0" width="358" height="15" uuid="9b5a0fc9-9f94-4aa2-9318-fd91263ecb1a"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{value_type}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="444" y="0" width="111" height="15" uuid="c9fcee8b-87ec-4934-9340-d5a2a50b7b88"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{value_building}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

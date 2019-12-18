@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pma_part_terreni_sub" language="groovy" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="364809e3-adc6-433d-bfd6-ee969b89449f">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="250"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod_building" class="java.lang.String">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pma_dati_gw.view_pma_building where cod_building=$P{cod_building}]]>
+	</queryString>
+	<field name="id_building" class="java.lang.Long"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="descr_building" class="java.lang.String"/>
+	<field name="geometry" class="java.lang.Object"/>
+	<field name="cod_site" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="name_building" class="java.lang.String"/>
+	<field name="cod_type_building" class="java.lang.String"/>
+	<field name="status_building" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="zip_code" class="java.lang.String"/>
+	<field name="descr_building_type" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="80" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="994b8625-4cdf-498e-8ac4-a76b57a77c82"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Comune]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="80" y="0" width="242" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="c6dc5007-5ab3-45f1-abee-dfd7307cbcd5"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Indirizzo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="322" y="0" width="90" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="b3472cbc-ba98-401b-ab48-4ff2060531b7"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Codice Immobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="412" y="0" width="143" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="a3e402f5-022a-45a9-bd9d-b6f673686646"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nome Immobile]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="80" height="20" uuid="3057bf3e-83ce-448b-b170-d71738ff6d32"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="80" y="0" width="242" height="20" uuid="79039863-e240-4613-8c9b-f3f171669d13"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="322" y="0" width="90" height="20" uuid="87e7049b-9686-430f-9345-a20c3d62c678"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_building}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="412" y="0" width="143" height="20" uuid="02449ba6-6dfa-4556-9685-3395cbac0f04"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name_building}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -8,5 +8,18 @@ La soluzione è composta dai seguenti moduli applicativi:
 *	WEBAPP per la consultazione dei temi del patrimonio immobiliare
 *	Configurazioni
 
+#Struttura del Repository
 
+all'interno della Cartella src sono contenuti:
+* Contenuti statici del progetto (immagini, icone, script groovy)
+* Script di installazione contenenti le ddl del modello dati e i dati di Geoweb
+* Il progetto cartografico che potrà essere caricato su Mapguide Open Source
+* I job GeoKettle
 
+# Installazione
+
+Per L'installazione fare riferimento ai manuali presenti in: Manuali/ManualiInstallazione
+
+#Stato del Progetto
+
+Realease 1.0 Stabile

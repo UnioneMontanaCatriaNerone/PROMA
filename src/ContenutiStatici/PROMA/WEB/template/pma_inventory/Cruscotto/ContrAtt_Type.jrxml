@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Stato rilievo" pageWidth="720" pageHeight="200" orientation="Landscape" columnWidth="720" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="1a9ef291-aa40-47e2-abbd-d4f985614cfc">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style_time" forecolor="#FFCC00">
+		<conditionalStyle>
+			<conditionExpression><![CDATA["In corso".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#FF0000" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["Completato".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#33CC00" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from view_rep_pri_contr_attivi order by descr_contr_type,denominazione,cod_building]]>
+	</queryString>
+	<field name="id_pri_contratti" class="java.lang.Long"/>
+	<field name="localita" class="java.lang.String"/>
+	<field name="id_comuni" class="java.lang.String"/>
+	<field name="gest_contratto" class="java.lang.String"/>
+	<field name="intestatario" class="java.lang.String"/>
+	<field name="tipo_intestatario" class="java.lang.String"/>
+	<field name="titolo_uso" class="java.lang.String"/>
+	<field name="oggetto_contratto" class="java.lang.Long"/>
+	<field name="durata_contratto" class="java.lang.String"/>
+	<field name="data_inizio" class="java.sql.Timestamp"/>
+	<field name="data_scadenza" class="java.sql.Timestamp"/>
+	<field name="durata" class="java.lang.String"/>
+	<field name="canone_annuo" class="java.lang.Double"/>
+	<field name="tipo_pagamento" class="java.lang.String"/>
+	<field name="svincolabile" class="java.lang.String"/>
+	<field name="lg203_82" class="java.lang.String"/>
+	<field name="note" class="java.lang.String"/>
+	<field name="causale" class="java.lang.String"/>
+	<field name="data_ins" class="java.sql.Timestamp"/>
+	<field name="utente_ins" class="java.lang.String"/>
+	<field name="ogg_contratto" class="java.lang.String"/>
+	<field name="cod_contratto" class="java.lang.String"/>
+	<field name="anno" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="evt_id_event_status" class="java.lang.Integer"/>
+	<field name="id_calendar" class="java.lang.Integer"/>
+	<field name="cod_calendar" class="java.lang.String"/>
+	<field name="descr_calendar" class="java.lang.String"/>
+	<field name="hex_color_calendar" class="java.lang.String"/>
+	<field name="evt_summary" class="java.lang.String"/>
+	<field name="evt_place" class="java.lang.String"/>
+	<field name="evt_start_date" class="java.sql.Timestamp"/>
+	<field name="evt_end_date" class="java.sql.Timestamp"/>
+	<field name="evt_notes" class="java.lang.String"/>
+	<field name="evt_drawing" class="java.lang.String"/>
+	<field name="evt_geometry" class="java.lang.String"/>
+	<field name="evt_id_calendar" class="java.lang.Integer"/>
+	<field name="evt_id_event_type" class="java.lang.Integer"/>
+	<field name="evt_id_priority" class="java.lang.Integer"/>
+	<field name="evt_id_start_alert" class="java.lang.Integer"/>
+	<field name="evt_id_repetition_alert" class="java.lang.Integer"/>
+	<field name="evt_id_end_alert" class="java.lang.Integer"/>
+	<field name="evt_is_event" class="java.lang.Integer"/>
+	<field name="descr_contr_type" class="java.lang.String"/>
+	<field name="denominazione" class="java.lang.String"/>
+	<field name="name_building" class="java.lang.String"/>
+	<field name="id_building" class="java.lang.Long"/>
+	<group name="Type">
+		<groupExpression><![CDATA[$F{descr_contr_type}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true" hyperlinkType="Reference">
+					<reportElement mode="Opaque" x="0" y="0" width="720" height="20" backcolor="#CCCCCC" uuid="64d2cf78-3297-4f5c-87b8-9ef5ca7e06c6"/>
+					<box leftPadding="5">
+						<topPen lineWidth="0.25" lineColor="#999999"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descr_contr_type}]]></textFieldExpression>
+					<hyperlinkReferenceExpression><![CDATA[]]></hyperlinkReferenceExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="720" height="30" forecolor="#FFFFFF" backcolor="#024885" uuid="3a43b96a-5831-43df-9525-b1c48c924e6a"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATTI ATTIVI PER TIPOLOGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="280" y="30" width="120" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="e640be70-e2c1-4cf1-9686-a01c2c6170a3"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data di inizio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="600" y="30" width="120" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="1b4dd564-15ec-4fae-a381-f00072cef94a"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edificio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="400" y="30" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="4af1606a-884a-4b94-9c21-d42890da7af1"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data di scadenza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="500" y="30" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="7873a9a4-94b0-487f-a38d-548b65f3f394"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Canone annuo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="120" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="67bec3c7-d4fc-4a90-b626-e4e8d885de41"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nr. contratto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="30" width="80" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="337f554e-13d5-4e00-a5b7-aaf3c7a2a09e"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Anno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="30" width="80" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="0820814c-ee77-4346-a887-a3f68dafa85b"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Durata]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="280" y="0" width="120" height="20" uuid="54fb77c6-2c85-4e40-8776-4b521b7a18ff"/>
+				<box>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_inizio}]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA[]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="400" y="0" width="100" height="20" uuid="00052d89-9086-44a5-9f3a-bb7412d31ea2"/>
+				<box>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_scadenza}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="600" y="0" width="120" height="20" uuid="9a11d27d-5211-4310-8a66-13a6aa90bcad"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_building}+" - "+$F{name_building}]]></textFieldExpression>
+				<hyperlinkTooltipExpression><![CDATA[]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="500" y="0" width="100" height="20" uuid="88d35f55-6d4f-4c9c-b1da-ef2159845c12"/>
+				<box>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{canone_annuo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="0" y="0" width="120" height="20" uuid="39aee0e6-c8a4-4a13-a5ca-527c00d40413"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_contratto}]]></textFieldExpression>
+				<hyperlinkTooltipExpression><![CDATA[]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="120" y="0" width="80" height="20" uuid="a3f6f581-fb25-4df9-875b-c7866ccc1086"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anno}]]></textFieldExpression>
+				<hyperlinkTooltipExpression><![CDATA[]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="Reference">
+				<reportElement x="200" y="0" width="80" height="20" uuid="a328150e-ce99-4b18-99b1-cbce023f9921"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{durata_contratto}]]></textFieldExpression>
+				<hyperlinkTooltipExpression><![CDATA[]]></hyperlinkTooltipExpression>
+			</textField>
+			<image scaleImage="FillFrame" hyperlinkType="Reference">
+				<reportElement x="0" y="0" width="120" height="18" uuid="774a007e-1094-4a4d-8979-c5abd2ecdfd9">
+					<property name="net.sf.jasperreports.export.html.class" value="reportlink"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL}+"immagine trasparente.png"]]></imageExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript: var itemId = "+$F{id_pri_contratti}+";var gwClassName= 'pri_contratti';var options = { forceReplaceTab: true };openGwClassDetailTab(itemId, gwClassName, options);"]]></hyperlinkReferenceExpression>
+			</image>
+			<image scaleImage="FillFrame" hyperlinkType="Reference">
+				<reportElement x="600" y="1" width="120" height="18" uuid="5fb89a14-29ee-45af-89a7-95291165fd34">
+					<property name="net.sf.jasperreports.export.html.class" value="reportlink"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL}+"immagine trasparente.png"]]></imageExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript: var itemId = "+$F{id_building}+";var gwClassName= 'pri_building';var options = { forceReplaceTab: true };openGwClassDetailTab(itemId, gwClassName, options);"]]></hyperlinkReferenceExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,179 @@
+INFO  02-10 17:36:12,070 - Kitchen - Start of run.
+INFO  02-10 17:36:13,566 - Using "C:\Users\ADMINI~1\AppData\Local\Temp\4\vfs_cache" as temporary files store.
+INFO  02-10 17:36:13,888 - Job-Catasto_censuario -solo inserimenti - Starting entry [Popola-cat_cens_terreni]
+INFO  02-10 17:36:13,889 - Popola-cat_cens_terreni - Loading transformation from XML file [file:///C:/ETL/job_catasto_e_mappe/Popola-cat_cens_terreni.ktr]
+INFO  02-10 17:36:14,052 - Job-Catasto_censuario -solo inserimenti - Starting entry [Popola-cat_cens_intestatari]
+INFO  02-10 17:36:14,053 - Popola-cat_cens_intestatari - Loading transformation from XML file [file:///C:/ETL/job_catasto_e_mappe/Popola-cat_cens_intestatari.ktr]
+INFO  02-10 17:36:14,073 - Popola-cat_cens_intestatari - Dispatching started for transformation [Popola-cat_cens_intestatari]
+INFO  02-10 17:36:14,080 - Popola-cat_cens_intestatari - This transformation can be replayed with replay date: 2019/10/02 17:36:14
+INFO  02-10 17:36:15,817 - scrivi in cat_cens_intestatari.0 - Connected to database [city4_data] (commit=50000)
+INFO  02-10 17:36:18,286 - leggi da VIEW_INTESTATARI_NEW.0 - Finished reading query, closing connection.
+INFO  02-10 17:36:18,299 - leggi da VIEW_INTESTATARI_NEW.0 - Finished processing (I=3069, O=0, R=0, W=3069, U=0, E=0)
+INFO  02-10 17:36:18,311 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000009600P], [9600], [9600], [BACIANINO], [GIOVANNA], [2], [1931/12/04 16:51:31.033], [E975], [BCNGNN31T44E975L], [null], [null], [null], [FBCNGNN31T44E975L], [], [], [G478], [femmina], [MARSCIANO], [null], [null], [null], [null], [null], [BACIANINO GIOVANNA], [null]
+
+Error inserting/updating row
+ERROR: duplicate key value violates unique constraint "cos_pk_intestatari"
+  Detail: Key (pk_intestatario)=(G478000009600P) already exists.
+
+INFO  02-10 17:36:18,312 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000014892P], [14892], [14892], [BASTIANELLI], [ROSA TECLA], [2], [1937/01/09 11:47:21.367], [G478], [BSTRTC37A49G478Q], [null], [null], [null], [FBSTRTC37A49G478Q], [], [], [G478], [femmina], [PERUGIA], [null], [null], [null], [null], [null], [BASTIANELLI ROSA TECLA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,313 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000031873P], [31873], [31873], [BRUTTO], [MARIA], [2], [1940/01/25 16:51:31.214], [C990], [BRTMRA40A65C990J], [null], [null], [null], [FBRTMRA40A65C990J], [], [], [G478], [femmina], [CORCIANO], [null], [null], [null], [null], [null], [BRUTTO MARIA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,315 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000046282P], [46282], [46282], [CESARINI], [PIER LUIGI], [1], [1933/07/17 11:47:21.397], [H501], [CSRPLG33L17H501E], [null], [null], [null], [FCSRPLG33L17H501E], [], [], [G478], [maschio], [ROMA], [null], [null], [null], [null], [null], [CESARINI PIER LUIGI], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,316 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000049102P], [49102], [49102], [CIARAPICA], [ANTONIO], [1], [1954/01/22 11:47:21.407], [G478], [CRPNTN54A22G478B], [null], [null], [null], [FCRPNTN54A22G478B], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [CIARAPICA ANTONIO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,317 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000055086P], [55086], [55086], [COSTANTINI], [GIANFRANCO], [1], [1937/01/16 16:51:31.233], [G478], [CSTGFR37A16G478P], [null], [null], [null], [FCSTGFR37A16G478P], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [COSTANTINI GIANFRANCO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,318 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000064505P], [64505], [64505], [ERMELLINI GRAZIA], [UBALDO], [1], [1939/06/10 11:47:21.434], [D279], [RMLBLD39H10D279Z], [null], [null], [null], [FRMLBLD39H10D279Z], [], [], [G478], [maschio], [DERUTA], [null], [null], [null], [null], [null], [ERMELLINI GRAZIA UBALDO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,319 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000056096P], [56096], [56096], [CRISTALDINI], [FAUSTO], [1], [1941/10/18 17:51:31.239], [G478], [CRSFST41R18G478T], [null], [null], [null], [FCRSFST41R18G478T], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [CRISTALDINI FAUSTO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,321 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000086362P], [86362], [86362], [GUASTELLA], [NICOLO], [1], [1921/01/16 11:47:21.492], [H501], [GSTNCL21A16H501P], [null], [null], [null], [FGSTNCL21A16H501P], [], [], [G478], [maschio], [ROMA], [null], [null], [null], [null], [null], [GUASTELLA NICOLO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,322 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000063060P], [63060], [63060], [DOTTORI], [RITA], [2], [1954/09/27 16:51:31.260], [G478], [DTTRTI54P67G478H], [null], [null], [null], [FDTTRTI54P67G478H], [], [], [G478], [femmina], [PERUGIA], [null], [null], [null], [null], [null], [DOTTORI RITA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,323 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000098080P], [98080], [98080], [MANGIACARNE FAINA], [ELENA], [2], [1928/03/01 11:47:21.506], [G478], [MNGLNE28C41G478O], [null], [null], [null], [FMNGLNE28C41G478O], [], [], [G478], [femmina], [PERUGIA], [null], [null], [null], [null], [null], [MANGIACARNE FAINA ELENA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,324 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000113209P], [113209], [113209], [MOLINI], [VANIA], [2], [1962/05/25 11:47:21.514], [A710], [MLNVNA62E65A710Y], [null], [null], [null], [FMLNVNA62E65A710Y], [], [], [G478], [femmina], [BASTIA UMBRA], [null], [null], [null], [null], [null], [MOLINI VANIA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,324 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000088595P], [88595], [88595], [LANA], [PAOLO], [1], [1949/08/17 17:51:31.284], [G478], [LNAPLA49M17G478C], [null], [null], [null], [FLNAPLA49M17G478C], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [LANA PAOLO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,325 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000146512P], [146512], [146512], [RICCI], [ELDA], [2], [1948/09/09 12:47:21.551], [G478], [RCCLDE48P49G478T], [null], [null], [null], [FRCCLDE48P49G478T], [], [], [G478], [femmina], [PERUGIA], [null], [null], [null], [null], [null], [RICCI ELDA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,326 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000148874P], [148874], [148874], [ROMANO], [ROSANNA], [2], [1931/05/25 11:47:21.559], [G273], [], [null], [null], [null], [null], [], [], [G478], [femmina], [PALERMO], [null], [null], [null], [null], [null], [ROMANO ROSANNA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,327 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000161014P], [161014], [161014], [SEPICACCHI], [MARIA PIERA], [2], [1955/11/29 11:47:21.577], [G478], [SPCMPR55S69G478G], [null], [null], [null], [FSPCMPR55S69G478G], [], [], [G478], [femmina], [PERUGIA], [null], [null], [null], [null], [null], [SEPICACCHI MARIA PIERA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,328 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000164071P], [164071], [164071], [SOLDATI], [ADRIANO], [1], [1938/04/05 11:47:21.592], [G478], [SLDDRN38D05G478A], [null], [null], [null], [FSLDDRN38D05G478A], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [SOLDATI ADRIANO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,329 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000184307P], [184307], [184307], [BAIOCCO], [GIANFRANCO], [1], [1963/05/18 11:47:21.609], [G478], [BCCGFR63E18G478B], [null], [null], [null], [FBCCGFR63E18G478B], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [BAIOCCO GIANFRANCO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,330 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000184663P], [184663], [184663], [BACOCCOLA], [GIUSEPPE], [1], [1961/02/15 11:47:21.616], [G478], [BCCGPP61B15G478Y], [null], [null], [null], [FBCCGPP61B15G478Y], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [BACOCCOLA GIUSEPPE], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,331 - scrivi in cat_cens_intestatari.0 - WARNING: Couldn't insert row into table: [G478000186002P], [186002], [186002], [BOCCIOLI], [PAOLA], [2], [1949/03/22 11:47:21.642], [G478], [BCCPLA49C62G478X], [null], [null], [null], [FBCCPLA49C62G478X], [], [], [G478], [femmina], [PERUGIA], [null], [null], [null], [null], [null], [BOCCIOLI PAOLA], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:18,333 - scrivi in cat_cens_intestatari.0 - FINAL WARNING (no more then 20 displayed): Couldn't insert row into table: [G478000186233P], [186233], [186233], [BOCCOLACCI], [REMO], [1], [1952/10/14 11:47:21.649], [G478], [BCCRME52R14G478Q], [null], [null], [null], [FBCCRME52R14G478Q], [], [], [G478], [maschio], [PERUGIA], [null], [null], [null], [null], [null], [BOCCOLACCI REMO], [null]
+
+Error inserting/updating row
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+
+INFO  02-10 17:36:19,419 - scrivi in cat_cens_intestatari.0 - Finished processing (I=0, O=3069, R=3069, W=3069, U=0, E=0)
+INFO  02-10 17:36:19,488 - Job-Catasto_censuario -solo inserimenti - Starting entry [Popola-cat_cens_urbano]
+INFO  02-10 17:36:19,489 - Popola-cat_cens_urbano - Loading transformation from XML file [file:///C:/ETL/job_catasto_e_mappe/Popola-cat_cens_urbano.ktr]
+INFO  02-10 17:36:19,519 - Popola-cat_cens_urbano - Dispatching started for transformation [Popola-cat_cens_urbano]
+INFO  02-10 17:36:19,521 - Popola-cat_cens_urbano - This transformation can be replayed with replay date: 2019/10/02 17:36:19
+INFO  02-10 17:36:19,597 - scrivi in cat_cens_urbano.0 - Connected to database [city4_data] (commit=50000)
+INFO  02-10 17:36:21,584 - leggi da MW_CU_IMMOBILI_NEW_IDE_IND.0 - Finished reading query, closing connection.
+INFO  02-10 17:36:21,589 - leggi da MW_CU_IMMOBILI_NEW_IDE_IND.0 - Finished processing (I=2814, O=0, R=0, W=2814, U=0, E=0)
+INFO  02-10 17:36:22,725 - Add sequence.0 - Finished processing (I=0, O=0, R=2814, W=2814, U=0, E=0)
+INFO  02-10 17:36:23,373 - scrivi in cat_cens_urbano.0 - Finished processing (I=0, O=2814, R=2814, W=2814, U=0, E=0)
+INFO  02-10 17:36:23,534 - Job-Catasto_censuario -solo inserimenti - Starting entry [Popola-cat_identita_urbano]
+INFO  02-10 17:36:23,534 - Popola-cat_identita_urbano - Loading transformation from XML file [file:///C:/ETL/job_catasto_e_mappe/Popola-cat_identita_urbano.ktr]
+INFO  02-10 17:36:23,549 - Popola-cat_identita_urbano - Dispatching started for transformation [Popola-cat_identita_urbano]
+INFO  02-10 17:36:23,550 - Popola-cat_identita_urbano - This transformation can be replayed with replay date: 2019/10/02 17:36:23
+INFO  02-10 17:36:23,597 - scrivi in cat_identita_urbano.0 - Connected to database [city4_data] (commit=50000)
+INFO  02-10 17:36:23,642 - leggi da CAT_CU_IDENTITA.0 - Finished reading query, closing connection.
+INFO  02-10 17:36:23,643 - leggi da CAT_CU_IDENTITA.0 - Finished processing (I=3305, O=0, R=0, W=3305, U=0, E=0)
+ERROR 02-10 17:36:23,749 - Popola-cat_identita_urbano - Errors detected!
+ERROR 02-10 17:36:23,749 - Popola-cat_identita_urbano - Errors detected!
+ERROR 02-10 17:36:23,763 - scrivi in cat_identita_urbano.0 - Because of an error, this step can't continue: 
+ERROR 02-10 17:36:23,763 - scrivi in cat_identita_urbano.0 - org.pentaho.di.core.exception.KettleException: 
+Error inserting row into table [cat_identita_urbano] with values: [155284315], [G4780001082577F003], [1082577], [F], [3], [90], [89], [16], [0090], [00089], [0016], [1082577], [null], [G4780009000089], [G47800090000890016], [], [], [], [G478], [G478000900008900000], [G4780009000089000000160]
+
+Error inserting/updating row
+ERROR: duplicate key value violates unique constraint "CAT_CU_IDENTITA_PK"
+  Detail: Key (pk_sequ_identita)=(155284315) already exists.
+
+
+	at org.pentaho.di.trans.steps.tableoutput.TableOutput.writeToTable(TableOutput.java:422)
+	at org.pentaho.di.trans.steps.tableoutput.TableOutput.processRow(TableOutput.java:114)
+	at org.pentaho.di.trans.step.BaseStep.runStepThread(BaseStep.java:2889)
+	at org.pentaho.di.trans.steps.tableoutput.TableOutput.run(TableOutput.java:680)
+Caused by: org.pentaho.di.core.exception.KettleDatabaseException: 
+Error inserting/updating row
+ERROR: duplicate key value violates unique constraint "CAT_CU_IDENTITA_PK"
+  Detail: Key (pk_sequ_identita)=(155284315) already exists.
+
+	at org.pentaho.di.core.database.Database.insertRow(Database.java:1351)
+	at org.pentaho.di.trans.steps.tableoutput.TableOutput.writeToTable(TableOutput.java:270)
+	... 3 more
+Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "CAT_CU_IDENTITA_PK"
+  Detail: Key (pk_sequ_identita)=(155284315) already exists.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:1608)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1343)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:194)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:451)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:350)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeUpdate(AbstractJdbc2Statement.java:304)
+	at org.pentaho.di.core.database.Database.insertRow(Database.java:1300)
+	... 4 more
+
+INFO  02-10 17:36:23,765 - scrivi in cat_identita_urbano.0 - Finished processing (I=0, O=0, R=1, W=0, U=0, E=1)
+INFO  02-10 17:36:23,766 - Popola-cat_identita_urbano - Transformation detected one or more steps with errors.
+INFO  02-10 17:36:23,766 - Popola-cat_identita_urbano - Transformation is killing the other steps!
+INFO  02-10 17:36:23,862 - Job-Catasto_censuario -solo inserimenti - Finished job entry [Popola-cat_identita_urbano] (result=[false])
+INFO  02-10 17:36:23,863 - Job-Catasto_censuario -solo inserimenti - Finished job entry [Popola-cat_cens_urbano] (result=[false])
+INFO  02-10 17:36:23,863 - Job-Catasto_censuario -solo inserimenti - Finished job entry [Popola-cat_cens_intestatari] (result=[false])
+INFO  02-10 17:36:23,863 - Job-Catasto_censuario -solo inserimenti - Finished job entry [Popola-cat_cens_terreni] (result=[false])
+INFO  02-10 17:36:23,864 - Kitchen - Finished!
+ERROR 02-10 17:36:23,864 - Kitchen - Finished with errors
+INFO  02-10 17:36:23,864 - Kitchen - Start=2019/10/02 17:36:13.745, Stop=2019/10/02 17:36:23.864
+INFO  02-10 17:36:23,864 - Kitchen - Processing ended after 10 seconds.

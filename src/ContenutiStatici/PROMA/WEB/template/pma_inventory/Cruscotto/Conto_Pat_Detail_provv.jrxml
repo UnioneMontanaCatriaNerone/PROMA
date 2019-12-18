@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Conto patrimoniale" pageWidth="780" pageHeight="200" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="780" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="1a9ef291-aa40-47e2-abbd-d4f985614cfc">
+	<property name="ireport.zoom" value="1.1000000000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style_time" forecolor="#FFCC00">
+		<conditionalStyle>
+			<conditionExpression><![CDATA["In corso".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#FF0000" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["Completato".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#33CC00" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pma_dati_gw.VIEW_PMA_PATR_ENTITIES order by descr_classification,cod_patr_entities]]>
+	</queryString>
+	<field name="cod_patr_entities" class="java.lang.String"/>
+	<field name="descr_patr_entities" class="java.lang.String"/>
+	<field name="purchase_date" class="java.sql.Timestamp"/>
+	<field name="purchase_value" class="java.math.BigDecimal"/>
+	<field name="date_expertise" class="java.sql.Timestamp"/>
+	<field name="type_expertise" class="java.lang.String"/>
+	<field name="value_expertise" class="java.math.BigDecimal"/>
+	<field name="degrad_coeff_ann" class="java.math.BigDecimal"/>
+	<field name="cod_income" class="java.lang.String"/>
+	<field name="cost_center" class="java.lang.String"/>
+	<field name="earn_center" class="java.lang.String"/>
+	<field name="fk_classification" class="java.lang.Integer"/>
+	<field name="descr_classification" class="java.lang.String"/>
+	<field name="code_state_valuation" class="java.lang.String"/>
+	<field name="descr_valuation" class="java.lang.String"/>
+	<variable name="value_expertise_1" class="java.math.BigDecimal" resetType="Group" resetGroup="classificazione" calculation="Sum">
+		<variableExpression><![CDATA[$F{value_expertise}]]></variableExpression>
+	</variable>
+	<variable name="value_expertise_tot" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{value_expertise}]]></variableExpression>
+	</variable>
+	<variable name="Formatter" class="java.text.DecimalFormat" calculation="System">
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="classificazione">
+		<groupExpression><![CDATA[$F{descr_classification}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="22">
+				<textField pattern="€ #,##0.00" isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="672" y="0" width="108" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="f3d4f219-9953-43ea-a024-b3414581c4ec"/>
+					<box rightPadding="2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.text.DecimalFormat("€ #,##0.00", new java.text.DecimalFormatSymbols(java.util.Locale.ITALY)).format($V{value_expertise_1})]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="672" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="972ed73c-aebd-4aad-b3a0-26ecaf2a8bf2"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#999999"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Totale per Classificazione]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="31">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="780" height="30" forecolor="#FFFFFF" backcolor="#024885" uuid="3a43b96a-5831-43df-9525-b1c48c924e6a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTO PATRIMONIALE PROVVISORIO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="45">
+			<staticText>
+				<reportElement mode="Opaque" x="674" y="27" width="108" height="18" forecolor="#FFFFFF" backcolor="#024885" uuid="5b4c85c3-58ea-4719-86ff-63d54f0ccb5c"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valore]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="513" y="27" width="161" height="18" forecolor="#FFFFFF" backcolor="#024885" uuid="67a00833-506f-453b-b030-aba53639077a"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Criterio rivalutazione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="309" y="27" width="105" height="18" forecolor="#FFFFFF" backcolor="#024885" uuid="b08eacfb-cb86-48b1-932d-8dc9d200d2f5"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codice Entità Patrimoniale]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="27" width="120" height="18" forecolor="#FFFFFF" backcolor="#024885" uuid="a05de6c5-8c73-4599-9663-a81c7d841ba9"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Classificazione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="27" width="99" height="18" forecolor="#FFFFFF" backcolor="#024885" uuid="8a96a235-5729-498d-8ff3-dd9ced34d212"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codice Cespite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="119" y="27" width="190" height="18" forecolor="#FFFFFF" backcolor="#024885" uuid="456ef5a7-2f89-4eae-b2ec-29b7c43b6238"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrizione Entità Patrimoniale]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField pattern="€ #,##0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="672" y="0" width="108" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="93f49473-e3b7-4dd2-aa47-3e157c232a4a"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineColor="#999999"/>
+					<topPen lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{value_expertise}!=null?(new java.text.DecimalFormat("€ #,##0.00", new java.text.DecimalFormatSymbols(java.util.Locale.ITALY)).format($F{value_expertise})):""]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="513" y="0" width="159" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="618b8bfe-fdec-4bfe-aaea-a015f6b88fc7"/>
+				<box>
+					<pen lineColor="#999999"/>
+					<topPen lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_valuation}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="309" y="0" width="105" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="35798de2-e45b-4e32-9788-5d5adb98b7a1"/>
+				<box>
+					<pen lineColor="#999999"/>
+					<topPen lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_patr_entities}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="414" y="0" width="99" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c3dc1aff-cb62-4c68-b770-74ae7c7d7ee2"/>
+				<box>
+					<pen lineColor="#999999"/>
+					<topPen lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_income}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" mode="Opaque" x="0" y="1" width="120" height="20" forecolor="#FFFFFF" backcolor="#999999" uuid="620bbce7-94bf-4b9d-9af0-89b1fcb8b460"/>
+				<box>
+					<pen lineColor="#999999"/>
+					<topPen lineColor="#999999"/>
+					<leftPen lineColor="#999999"/>
+					<bottomPen lineColor="#CCCCCC"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_classification}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="119" y="0" width="190" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="05622f71-000c-4473-bb87-d9d125f9447c"/>
+				<box>
+					<pen lineColor="#999999"/>
+					<topPen lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_patr_entities}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="672" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="af0154c4-cc91-4d23-8ae3-1bb72607368f"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTALE PATRIMONIO]]></text>
+			</staticText>
+			<textField pattern="€ #,##0.00" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="672" y="0" width="108" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="ee059100-fedb-4703-9a07-4f9646db1b71"/>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("€ #,##0.00", new java.text.DecimalFormatSymbols(java.util.Locale.ITALY)).format($V{value_expertise_tot})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pri_part_urbano" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="79e908d4-83b3-43c9-8287-2e190f44904d">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="17"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_pri_part_urbano" class="java.lang.Integer" isForPrompting="false">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     *
+FROM
+     pma_dati_gw.view_rep_pma_urbano
+WHERE
+     id_pri_part_urbano = $P{id_pri_part_urbano}]]>
+	</queryString>
+	<field name="id_pri_part_urbano" class="java.lang.Integer"/>
+	<field name="progressivo" class="java.lang.Long"/>
+	<field name="codice_titolarita" class="java.lang.String"/>
+	<field name="partita" class="java.lang.String"/>
+	<field name="zona" class="java.lang.String"/>
+	<field name="classe" class="java.lang.String"/>
+	<field name="foglio" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="subalterno" class="java.lang.String"/>
+	<field name="consistenza" class="java.lang.Double"/>
+	<field name="superficie" class="java.lang.Double"/>
+	<field name="rendita" class="java.lang.Double"/>
+	<field name="anno_iniziale" class="java.lang.Short"/>
+	<field name="anno_finale" class="java.lang.Short"/>
+	<field name="sezione" class="java.lang.String"/>
+	<field name="edificio" class="java.lang.String"/>
+	<field name="id_comuni" class="java.lang.String"/>
+	<field name="tipo_consistenza" class="java.lang.String"/>
+	<field name="descr_categoria" class="java.lang.String"/>
+	<field name="lista_indirizzi" class="java.lang.String"/>
+	<field name="lista_identita" class="java.lang.String"/>
+	<field name="uk_particella" class="java.lang.String"/>
+	<field name="uk_subalterno" class="java.lang.String"/>
+	<field name="uk_cat_particella" class="java.lang.String"/>
+	<field name="uk_cat_subalterno" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="id_pertinenza" class="java.lang.Long"/>
+	<field name="id_prop_ent" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="192" splitType="Stretch">
+			<subreport>
+				<reportElement x="10" y="0" width="595" height="192" uuid="beb03376-c15d-4a86-847f-6b10919795cd"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="id_pri_part_urbano">
+					<subreportParameterExpression><![CDATA[$F{id_pri_part_urbano}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_part_urbano_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

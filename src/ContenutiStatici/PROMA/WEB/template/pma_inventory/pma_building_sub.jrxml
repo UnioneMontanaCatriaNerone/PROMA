@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pri_building_sub" language="groovy" pageWidth="595" pageHeight="852" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="61d536ce-e95a-4f44-9589-40f750805195">
+	<property name="ireport.zoom" value="1.210000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="COD_BUILDING" class="java.lang.String">
+		<property name="site_code" value="site_code"/>
+	</parameter>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     *
+FROM
+     pma_dati_gw.view_rep_pma_build_detail
+WHERE
+     cod_building = $P{COD_BUILDING}]]>
+	</queryString>
+	<field name="id_building" class="java.lang.Long"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="descr_building" class="java.lang.String"/>
+	<field name="geometry" class="java.lang.Object"/>
+	<field name="cod_site" class="java.lang.String"/>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="name_building" class="java.lang.String"/>
+	<field name="cod_type_building" class="java.lang.String"/>
+	<field name="status_building" class="java.lang.String"/>
+	<field name="photo_name" class="java.lang.String"/>
+	<field name="photo_blob" class="java.io.InputStream"/>
+	<field name="photo_ctype" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="descr_building_type" class="java.lang.String"/>
+	<field name="descr_country" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="30" forecolor="#FFFFFF" backcolor="#024885" uuid="f6cb1b50-8f0e-4582-9884-8b4d5b2b448d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[SCHEDA IMMOBILE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="190" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="6" width="555" height="22" forecolor="#FFFFFF" backcolor="#024885" uuid="7b37198e-b4f0-4d35-b09e-5d0c908c9a8f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Dati Complesso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="28" width="185" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="d42b979a-1faf-452e-81d5-b2473eca983b"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Codice complesso]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="43" width="185" height="15" uuid="75e290d6-957e-4b4a-a627-829c6fff5bdf"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_site}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="28" width="185" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="835ea1e4-6623-404a-99e8-8e84910d8908"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Comune]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="370" y="43" width="185" height="15" uuid="80e62c40-2814-47ca-958e-6602868840ee"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="93" width="555" height="22" forecolor="#FFFFFF" backcolor="#024885" uuid="9303ed09-a2ea-4d15-b90c-4564217a161a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Dati identificativi immobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="115" width="185" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="a2ba9031-c1f3-4ca1-96c6-7f89c2de4b6c"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nome immobile]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="130" width="150" height="15" uuid="4600a66d-50f2-47a6-bb15-097ee7a886f7"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_building}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="115" width="220" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="7aa217d4-2d14-41f3-b30b-aeb2be00f5a7"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Classificazione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="115" width="150" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="14e9691b-8425-45c1-8783-8161c1b95927"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Codice immobile]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="370" y="130" width="185" height="15" uuid="0bd1ccec-c4de-4413-bdc3-a361a6cbb1b9"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name_building}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="130" width="220" height="15" uuid="25f8e908-5138-455a-ae77-ff4ffb93c789"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_building_type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="145" width="150" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="e33ba3db-cadb-44b3-8762-829f8b47bdc5"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Descrizione immobile:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="145" width="405" height="15" uuid="918e090f-92ca-470c-a9e7-c3a060a17fc9"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_building}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="160" width="150" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="fa63e401-d920-4ef6-b182-91caffb9558b"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Indirizzo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="160" width="405" height="15" uuid="ea81c947-6293-49d7-8991-4c316b2b927f"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="175" width="150" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="68c0adfd-bdf6-4de4-b076-d5720df12a52"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Stato:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="175" width="405" height="15" uuid="68f39072-b4fb-47f0-80b1-36421a4f90af"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status_building}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="185" y="43" width="185" height="15" uuid="4cb4105b-ef3c-4c48-904c-e53b0d920ef3"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_country}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="185" y="28" width="185" height="15" forecolor="#000000" backcolor="#CCCCCC" uuid="46931aa3-d9f5-4452-9c65-a31f16af9aa3"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Regione]]></text>
+			</staticText>
+		</band>
+		<band height="20"/>
+		<band height="285">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="22" forecolor="#FFFFFF" backcolor="#024885" uuid="c7f6016a-b141-4ce3-a396-8bb996c5447e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Foto principale]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" hAlign="Center">
+				<reportElement x="0" y="22" width="555" height="263" uuid="86171eae-ed08-457a-af29-d616f0e2bce2"/>
+				<imageExpression><![CDATA[$F{photo_blob}]]></imageExpression>
+			</image>
+		</band>
+		<band height="47">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="41" uuid="8cf774ec-db5a-462a-a9da-047f13ac235b"/>
+				<subreportParameter name="COD_BUILDING">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_building_photo.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="48">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="41" uuid="8fe9bedb-2715-4aa7-a603-5b26ab7c6a54"/>
+				<subreportParameter name="COD_BUILDING">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_building_system.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="48">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="41" uuid="c49478fc-6a52-47c3-89d6-2d18485fbdc8"/>
+				<subreportParameter name="COD_BUILDING">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_building_value.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="40" uuid="7ac4ae39-4f0c-45b8-b14d-c62d1962bb36"/>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="COD_BUILDING">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/pma_part_urbano_ripart.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

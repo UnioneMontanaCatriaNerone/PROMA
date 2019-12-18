@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="odl_summary" pageWidth="800" pageHeight="80" orientation="Landscape" columnWidth="800" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1a9ef291-aa40-47e2-abbd-d4f985614cfc">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style_time" forecolor="#FFCC00">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{time_to_start_day_int} > 0 || $F{time_to_start_day_int} == 0]]></conditionExpression>
+			<style forecolor="#FFCC00" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{time_to_start_day_int} <0]]></conditionExpression>
+			<style forecolor="#FF0000" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="fk_comuni" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select
+a.ord_record,
+a.fk_comuni,
+a.group_record,
+a.label_record,
+a.num_record
+from
+((select
+1 as ord_record,
+'Persone fisiche non residenti con contratti utenza elettrica' as group_record,
+'Numero persone fisiche' as label_record,
+fk_comuni,
+count(uk_codi_soggetto) as num_record
+from view_vt_el_fis_no_res
+group by fk_comuni)
+union
+(select
+2 as ord_record,
+'Persone fisiche residenti con contratti utenza elettrica' as group_record,
+'Numero persone fisiche' as label_record,
+fk_comuni,
+COUNT (uk_codi_soggetto) as num_record
+from view_vt_el_fis_res
+group by fk_comuni)
+union
+(select
+3 as ord_record,
+'Persone giuridiche con contratti utenza elettrica' as group_record,
+'N. persone giuridiche' as label_record,
+fk_comuni,
+count (uk_codi_soggetto) as num_record
+from view_vt_el_giur_no_cont
+group by fk_comuni)) a
+where fk_comuni=$P{fk_comuni}
+order by a.ord_record]]>
+	</queryString>
+	<field name="ORD_RECORD" class="java.math.BigDecimal"/>
+	<field name="FK_COMUNI" class="java.lang.String"/>
+	<field name="GROUP_RECORD" class="java.lang.String"/>
+	<field name="LABEL_RECORD" class="java.lang.String"/>
+	<field name="NUM_RECORD" class="java.math.BigDecimal"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<group name="Group">
+		<groupExpression><![CDATA[$F{GROUP_RECORD}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="47fe6f84-e6ad-48f2-9b52-e611d8995dd9" mode="Opaque" x="0" y="0" width="800" height="30" forecolor="#FFFFFF" backcolor="#FF9900"/>
+					<box leftPadding="5" rightPadding="5">
+						<leftPen lineWidth="0.0" lineColor="#CCCCFF"/>
+						<bottomPen lineWidth="0.0" lineColor="#CCCCFF"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="16" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{GROUP_RECORD}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="5"/>
+		</groupFooter>
+	</group>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="7b86df52-a724-4460-a133-6b7fe0a4884c" mode="Opaque" x="340" y="0" width="50" height="30" forecolor="#4E6781" backcolor="#FFFFFF"/>
+				<box leftPadding="0">
+					<leftPen lineWidth="0.0" lineColor="#CCCCFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCFF"/>
+					<rightPen lineWidth="0.0" lineColor="#CCCCFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUM_RECORD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="47fe6f84-e6ad-48f2-9b52-e611d8995dd9" mode="Opaque" x="40" y="0" width="300" height="30" forecolor="#4E6781" backcolor="#FFFFFF"/>
+				<box leftPadding="20" rightPadding="5">
+					<leftPen lineWidth="0.0" lineColor="#CCCCFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCFF"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LABEL_RECORD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="618481db-db42-4ff5-ac1e-a5a71d0854cc" mode="Opaque" x="390" y="0" width="410" height="30" forecolor="#4E6781" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

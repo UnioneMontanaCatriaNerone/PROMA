@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Consistenza_Ter_Detail" pageWidth="723" pageHeight="200" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="723" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="1a9ef291-aa40-47e2-abbd-d4f985614cfc">
+	<property name="ireport.zoom" value="1.210000000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style_time" forecolor="#FFCC00">
+		<conditionalStyle>
+			<conditionExpression><![CDATA["In corso".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#FF0000" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["Completato".equals($F{STATO_RILEVAZIONE})]]></conditionExpression>
+			<style forecolor="#33CC00" fontName="Arial" fontSize="9" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="AmbitoDefault" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_CONN" class="java.lang.Object" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONNECTION}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+A.ID_BUILDING,
+A.COD_BUILDING,
+A.NAME_BUILDING,
+A.COD_COMPANY,
+D.DESCR_COMPANY,
+A.COD_SITE,
+a.cod_site_applicative,
+ ( SELECT DISTINCT c.description
+    FROM pma_dati_gw.cmn_cities c
+ JOIN pma_dati_gw.view_pma_building p ON p.uk_belfiore::text =c.uk_belfiore::text) as city,
+A.SUPERFICIE,
+A.COD_TYPE_BUILDING,
+B.DESCR_TERRAIN_TYPE
+FROM pma_dati_gw.VIEW_PMA_BUILDING A
+LEFT JOIN
+pma_dati_gw.PMA_TERRAIN_TYPE B ON B.COD_TERRAIN_TYPE=A.COD_TYPE_BUILDING
+LEFT JOIN
+pma_dati_gw.GWD_COMPANY D ON D.COD_COMPANY=A.COD_COMPANY
+LEFT JOIN
+pma_dati_gw.view_pma_site E ON E.cod_site=A.COD_SITE
+where a.cod_type_building='TER']]>
+	</queryString>
+	<field name="cod_building" class="java.lang.String"/>
+	<field name="id_building" class="java.lang.Long"/>
+	<field name="name_building" class="java.lang.String"/>
+	<field name="cod_company" class="java.lang.String"/>
+	<field name="descr_company" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_site" class="java.lang.String"/>
+	<field name="city" class="java.lang.String">
+		<fieldDescription><![CDATA[comune di ubicazione del site]]></fieldDescription>
+	</field>
+	<field name="superficie" class="java.lang.Double"/>
+	<field name="descr_terrain_type" class="java.lang.String"/>
+	<field name="cod_site_applicative" class="java.lang.String"/>
+	<variable name="SUM_SU" class="java.math.BigDecimal" resetType="Group" resetGroup="site" calculation="Sum">
+		<variableExpression><![CDATA[$F{superficie}]]></variableExpression>
+	</variable>
+	<variable name="sum_su_comp" class="java.math.BigDecimal" resetType="Group" resetGroup="company" calculation="Sum">
+		<variableExpression><![CDATA[$F{superficie}]]></variableExpression>
+	</variable>
+	<group name="company">
+		<groupExpression><![CDATA[$F{descr_company}]]></groupExpression>
+		<groupHeader>
+			<band height="11"/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="site">
+		<groupExpression><![CDATA[$F{cod_site_applicative}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="0" y="0" width="723" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="c93d2132-7f1e-4e19-97d7-dc0cf82969fa"/>
+					<box leftPadding="30">
+						<topPen lineWidth="0.25" lineColor="#999999"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="true"/>
+						<paragraph leftIndent="40"/>
+					</textElement>
+					<textFieldExpression><![CDATA[ "Complesso: "+ $F{cod_site_applicative} + " - " + $F{name_building}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="terrain">
+		<groupExpression><![CDATA[$F{cod_building}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="110" height="20" uuid="64d2cf78-3297-4f5c-87b8-9ef5ca7e06c6"/>
+					<box leftPadding="5">
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="Reference">
+					<reportElement x="111" y="0" width="127" height="20" forecolor="#000000" uuid="9a11d27d-5211-4310-8a66-13a6aa90bcad"/>
+					<box leftPadding="5">
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cod_building}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="Reference">
+					<reportElement x="238" y="0" width="115" height="20" uuid="f556ffba-f0a6-4571-a322-f17a3b9f537f"/>
+					<box leftPadding="5">
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{name_building}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="Reference">
+					<reportElement x="354" y="0" width="178" height="20" uuid="edd59ea1-e5a3-4ca8-99bd-8128d6a4f234"/>
+					<box leftPadding="5">
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descr_terrain_type}]]></textFieldExpression>
+					<hyperlinkReferenceExpression><![CDATA[]]></hyperlinkReferenceExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="Reference">
+					<reportElement x="533" y="0" width="190" height="20" uuid="2d9048e5-b9d1-4399-939e-94c2fb17df49"/>
+					<box leftPadding="5">
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{superficie}]]></textFieldExpression>
+					<hyperlinkReferenceExpression><![CDATA[]]></hyperlinkReferenceExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="30">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="723" height="30" forecolor="#FFFFFF" backcolor="#024885" uuid="3a43b96a-5831-43df-9525-b1c48c924e6a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSISTENZA TERRENI]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="110" height="36" forecolor="#FFFFFF" backcolor="#024885" uuid="a05de6c5-8c73-4599-9663-a81c7d841ba9"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comune]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="110" y="0" width="128" height="36" forecolor="#FFFFFF" backcolor="#024885" uuid="1b4dd564-15ec-4fae-a381-f00072cef94a"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.0" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codice Terreno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="353" y="0" width="179" height="36" forecolor="#FFFFFF" backcolor="#024885" uuid="62a51ef8-0843-45ab-a67a-e88dafbd796b"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipologia terreno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="533" y="0" width="190" height="36" forecolor="#FFFFFF" backcolor="#024885" uuid="f401521f-7679-43b4-8b52-7fd2f28a8be7"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Superficie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="238" y="0" width="115" height="36" forecolor="#FFFFFF" backcolor="#024885" uuid="c719414e-755e-4f54-b996-65ef08a00817"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.0" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Denominazione]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement x="238" y="0" width="486" height="41" isRemoveLineWhenBlank="true" uuid="a68017ac-6d98-4753-b7c1-ff8f9e47934b"/>
+				<subreportParameter name="COD_BUILDING">
+					<subreportParameterExpression><![CDATA[$F{cod_building}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_CONN">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_CONN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_URL">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_URL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{SUBREPORT_CONN}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_URL}+"/Consistenza_Ter_Sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

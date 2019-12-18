@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cde_document" language="groovy" pageWidth="655" pageHeight="200" whenNoDataType="NoDataSection" columnWidth="655" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="727ef6c0-6543-45d0-b56f-6e6ab9bc632f">
+	<property name="ireport.zoom" value="1.1269722013523664"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="id_project" class="java.lang.Integer"/>
+	<parameter name="AmbitoDefault" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select
+a.fk_cod_obj,
+d.type_obj,
+a.fk_doc_type,
+b.descr_arc_cat,
+b.descr_arc_subcat,
+b.descr_arc_type,
+count(c.id_aim_document) as num_document,
+min(c.redaction_date) as redaction_date_old,
+max(c.redaction_date) as redaction_date_young
+from cde_r_document_object a
+left join view_cde_doc_arc_type b on b.cod_arc_type=a.fk_doc_type
+left join view_cde_cns_aim_document c on c.cod_obj||'-'||c.cod_arc_type=a.fk_cod_obj||'-'||a.fk_doc_type
+left join view_cde_r_doc_obj d on d.COD_OBJ=a.FK_COD_OBJ
+where d.type_obj='Unità Tecnologiche'  and d.cod_company in ($P!{AmbitoDefault})
+group by a.fk_cod_obj,d.type_obj,a.fk_doc_type,b.descr_arc_cat,b.descr_arc_subcat,b.descr_arc_type
+order by a.fk_cod_obj,a.fk_doc_type]]>
+	</queryString>
+	<field name="fk_cod_obj" class="java.lang.String"/>
+	<field name="type_obj" class="java.lang.String"/>
+	<field name="fk_doc_type" class="java.lang.String"/>
+	<field name="descr_arc_cat" class="java.lang.String"/>
+	<field name="descr_arc_subcat" class="java.lang.String"/>
+	<field name="descr_arc_type" class="java.lang.String"/>
+	<field name="num_document" class="java.lang.Long"/>
+	<field name="redaction_date_old" class="java.sql.Timestamp"/>
+	<field name="redaction_date_young" class="java.sql.Timestamp"/>
+	<variable name="num_doc_del_list_proj" class="java.lang.Integer" resetType="Group" resetGroup="Project_Cod" calculation="Sum">
+		<variableExpression><![CDATA[$F{num_document}]]></variableExpression>
+	</variable>
+	<variable name="num_doc_category" class="java.lang.Integer" resetType="Group" resetGroup="category_subcategory" calculation="Sum">
+		<variableExpression><![CDATA[$F{num_document}]]></variableExpression>
+	</variable>
+	<variable name="num_doc_subcategory" class="java.lang.Integer" resetType="Group" resetGroup="subcategory" calculation="Sum">
+		<variableExpression><![CDATA[$F{num_document}]]></variableExpression>
+	</variable>
+	<group name="Project_Cod" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{fk_cod_obj}]]></groupExpression>
+		<groupHeader>
+			<band height="73">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="8" width="655" height="25" forecolor="#000000" backcolor="#D9D9D9" uuid="52147caf-641f-4392-bc19-d9ede1d54123"/>
+					<box leftPadding="10">
+						<rightPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Entità patrimoniale: " + $F{fk_cod_obj}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="Project_Cod" isBlankWhenNull="true">
+					<reportElement x="260" y="8" width="395" height="25" uuid="f94b1e21-f1ff-4967-a7f2-21a8ac96f61a"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["documenti caricati: Nr. " + $V{num_doc_del_list_proj}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="33" width="205" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="b3213285-b80c-42db-81c4-336253e0bb3f"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<leftPen lineWidth="0.25" lineColor="#024885"/>
+						<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Raccolta documentale prevista]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="205" y="33" width="450" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="01adfdf9-031f-4e02-ab60-856219e2ca73"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<leftPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="0.25" lineColor="#024885"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Documenti Prodotti]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="53" width="205" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="5a0362d3-7e9f-420b-b690-5b45ddb7387c"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<leftPen lineWidth="0.25" lineColor="#024885"/>
+						<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipologia]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="315" y="53" width="120" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="88926a1c-88e0-4ae8-9dab-fcf5e3dc39dc"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<leftPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Data prima redazione]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="555" y="53" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="7f0c4741-3459-4216-b528-7ea692844f97"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<leftPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="0.25" lineColor="#024885"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Consulta  Documenti]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="205" y="53" width="110" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="04c8c36e-05bc-48d3-85d3-c23667016ea2"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<leftPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nr. documenti prodotti]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="435" y="53" width="120" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="61a89c3b-e2f0-4eb3-8a87-c531a4e8a428"/>
+					<box>
+						<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<leftPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Data ultima redazione]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="category_subcategory">
+		<groupExpression><![CDATA[$F{descr_arc_cat}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField isBlankWhenNull="true">
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="655" height="25" forecolor="#024885" backcolor="#D9D9D9" uuid="46899752-d52c-4f66-84cc-31b0c45e95d4"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineWidth="0.25" lineColor="#999999"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Categoria: " + $F{descr_arc_cat}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="category_subcategory" isBlankWhenNull="true">
+					<reportElement x="315" y="0" width="340" height="25" forecolor="#024885" uuid="e8c581d1-5a76-44b0-9b20-007b3bb4694f"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["documenti caricati: Nr. " + $V{num_doc_category}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="subcategory">
+		<groupExpression><![CDATA[$F{descr_arc_subcat}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="655" height="25" forecolor="#024885" backcolor="#D9D9D9" uuid="25515d2e-1ff0-40d2-8f74-453b60bc2048"/>
+					<box leftPadding="25">
+						<pen lineColor="#999999"/>
+						<topPen lineWidth="0.25" lineColor="#999999"/>
+						<leftPen lineWidth="0.25" lineColor="#999999"/>
+						<bottomPen lineWidth="0.25" lineColor="#999999"/>
+						<rightPen lineWidth="0.25" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Sottocategoria: " + $F{descr_arc_subcat}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="subcategory" isBlankWhenNull="true">
+					<reportElement x="315" y="0" width="340" height="25" forecolor="#024885" uuid="52d6da79-5ef5-4860-8056-f1924f7d492e"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["documenti caricati: Nr. " + $V{num_doc_subcategory}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="655" height="50" forecolor="#024885" uuid="b84b2501-0dc6-41af-b0ff-afa866b0b0cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Archivio Raccolte documentali Previste e Numero di documenti presenti per Entità Patrimoniale]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Blank" hyperlinkType="Reference">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="634" y="30" width="21" height="20" uuid="66cd250e-f609-497a-9ab2-e8ba66a20d5b">
+					<property name="net.sf.jasperreports.export.html.class" value="reportlink"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL}+"pdf.png"]]></imageExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript:var reportName='cde_document_utecnologiche.pdf'; var itemId =''; var className = '';var reportUrl='/pri_inventory/Cruscotto/cde_document_utecnologichePDF.jasper'; var attachment = true; var reportParameters = {className:className,attachment:attachment}; openGwReport(reportUrl,reportName,reportParameters,className,attachment);"]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA["Apri report in pdf"]]></hyperlinkTooltipExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="555" y="0" width="100" height="20" uuid="78a132f6-e45d-48a6-af86-c640316e5661"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="205" y="0" width="110" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="fe030e07-1361-4a77-9623-73a687c1f514"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_document}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="315" y="0" width="120" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8d5d7069-a504-4a6c-8dce-155f2327eada"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{redaction_date_old}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="205" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="99b95d26-972f-449e-bf36-a065a0231c60"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_arc_type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="435" y="0" width="120" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8b59bc7b-7a5f-4f82-8f1f-4aca0a932c1f"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{redaction_date_young}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" onErrorType="Blank" hyperlinkType="Reference">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="604" y="0" width="21" height="20" uuid="54dc9e9a-cfe8-4bc6-b0ba-b77a3ffc945c">
+					<property name="net.sf.jasperreports.export.html.class" value="reportlink"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL}+"fascicolo.png"]]></imageExpression>
+				<hyperlinkReferenceExpression><![CDATA["javascript:var tabWidgetType = 'gwClassList'; var className = 'cde_cns_aim_document'; var tabName = className; var tabWidgetId =tabWidgetType+'_'+tabName+'_tab'; var tabWidgetTitle = 'Elenco Documenti'; var parametersMap = {className: className,staticFilters:[ { condition: 'AND', columnName: 'cod_obj', operator: '=', filterType: 'STRING', value: ['"+$F{fk_cod_obj}+"'] }, { condition: 'AND', columnName: 'cod_arc_type', operator: '=', filterType: 'STRING', value: ['"+$F{fk_doc_type}+"'] }  ] };openTab(tabWidgetId, tabWidgetType, tabWidgetTitle, parametersMap);"]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA["Apri elenco documenti"]]></hyperlinkTooltipExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

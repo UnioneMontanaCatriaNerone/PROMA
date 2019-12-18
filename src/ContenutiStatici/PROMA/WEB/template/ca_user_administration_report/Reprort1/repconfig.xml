@@ -1,0 +1,9 @@
+<staticReportInfo>
+  <name>Reprort1</name>
+  <description>Report di TEST</description>
+  <type>pdf</type>
+  <mainReport>activity.png</mainReport>
+  <resources>
+    <null/>
+  </resources>
+</staticReportInfo>

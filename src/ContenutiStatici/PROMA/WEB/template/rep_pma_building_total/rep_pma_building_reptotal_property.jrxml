@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rep_pma_building_reptotal_property" language="groovy" pageWidth="300" pageHeight="802" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9f2b9d39-d4c8-46c1-a65e-02e93a889e31">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from pma_dati_gw.view_rep_pma_building_reptotal_property]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="conta_tot" class="java.lang.Long"/>
+	<field name="conta_proprieta" class="java.lang.Long"/>
+	<field name="conta_locazione" class="java.lang.Long"/>
+	<field name="conta_gestione" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="300" height="40" forecolor="#FFFFFF" backcolor="#024885" uuid="c1ed407f-ed6f-463b-b791-46bb830303db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Titolo di possesso]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="5" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="f06240a7-695a-4ee6-bce2-07320cc9cb57"/>
+				<box rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.75" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.75" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proprietà]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="100" y="5" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="f697b67a-4eff-4fc7-8027-271e20857a15"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Locazione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="200" y="5" width="100" height="20" forecolor="#FFFFFF" backcolor="#024885" uuid="69a1e3c4-7b72-4eea-81af-98a61ce5669d"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gestione]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="25" width="100" height="60" forecolor="#000000" uuid="6289c53f-309d-4648-b18b-3ac3c831c25a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta_proprieta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="25" width="100" height="60" forecolor="#000000" uuid="4099b548-866e-46c8-a58f-0adc5a21d0ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta_locazione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="25" width="100" height="60" forecolor="#000000" uuid="1ef1e4c3-831d-4af2-8dcd-9369f3d3460f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conta_gestione}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

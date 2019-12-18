@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ca_dashboard" language="groovy" pageWidth="900" pageHeight="500" columnWidth="900" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e610906e-8131-4b09-acbc-c3ad34f30107">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="RPT-CA-001_title" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_URL" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select * from pma_dati_gw.view_ca_rep_dashboard]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="num_users" class="java.lang.Long"/>
+	<field name="min_data_login" class="java.sql.Timestamp"/>
+	<field name="max_data_login" class="java.sql.Timestamp"/>
+	<field name="num_login_tot" class="java.lang.Long"/>
+	<field name="num_day_login" class="java.lang.Double"/>
+	<field name="num_login_user" class="java.lang.Long"/>
+	<field name="num_login_day" class="java.lang.Double"/>
+	<title>
+		<band height="370" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="0" y="0" width="840" height="40" forecolor="#FFFFFF" backcolor="#024885" uuid="5aec454c-9823-47f4-a76b-3b115bf65557"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#024885"/>
+					<leftPen lineWidth="0.25" lineColor="#024885"/>
+					<bottomPen lineWidth="0.25" lineColor="#024885"/>
+					<rightPen lineWidth="0.25" lineColor="#024885"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RPT-CA-001_title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="425" y="110" width="170" height="65" forecolor="#024885" backcolor="#FFFFFF" uuid="c14bda11-4924-48ee-94cc-6aac50e63e25"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_users}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="425" y="55" width="170" height="25" forecolor="#024885" backcolor="#FFFFFF" uuid="e87a7c64-179f-4a12-bb7d-91acc64ca5c0"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Utenti]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="305" y="65" width="120" height="100" uuid="5a51fc33-5ad7-40f6-ad89-146ae241a802"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//ca_user.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="425" y="80" width="170" height="30" forecolor="#024885" backcolor="#FFFFFF" uuid="a0acb6e3-5df2-4b5a-aa12-d70e7d75c9c8"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[numero totale di
+utenti del sistema ]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="0" y="65" width="120" height="100" uuid="47504ce6-dee8-4ea6-87d9-4b016daccc47"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//ca_login.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="80" width="170" height="30" forecolor="#024885" backcolor="#FFFFFF" uuid="986d768a-3bb8-409b-8188-13ff498e2298"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[numero totale di
+accessi al sistema]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="120" y="110" width="170" height="65" forecolor="#024885" backcolor="#FFFFFF" uuid="1946cc6c-6ac0-4c08-bc49-d8d9db5c0670"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_login_tot}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="55" width="170" height="25" forecolor="#024885" backcolor="#FFFFFF" uuid="fc67ebc7-b182-4797-acf9-e5b5c6d26969"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Accessi]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="610" y="65" width="120" height="100" uuid="dea134ca-4e7d-463b-b904-fd0b7e7f7893"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//ca_statistic.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="730" y="55" width="170" height="25" forecolor="#024885" backcolor="#FFFFFF" uuid="d6162551-a3a0-4d4c-b7ea-860f62f5d130"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Accessi/Utente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="730" y="80" width="170" height="30" forecolor="#024885" backcolor="#FFFFFF" uuid="02e26cb8-cad5-4906-8528-0d6b6f3bb745"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[numero medio di
+accessi per utente ]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="730" y="110" width="170" height="65" forecolor="#024885" backcolor="#FFFFFF" uuid="9350202c-c4bc-4193-bbf9-9346c93c5b40"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_login_user}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="0" y="260" width="120" height="100" uuid="80927c05-558f-450a-9717-ff8aceee6d69"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//ca_calendar_start.png"]]></imageExpression>
+			</image>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="305" y="260" width="120" height="100" uuid="39e3ab0d-d569-42ed-b3a0-7a69cb92660a"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//ca_calendar_end.png"]]></imageExpression>
+			</image>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="610" y="260" width="120" height="100" uuid="b860cce5-9212-4461-8df5-289152fef3b6"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_URL} + "//ca_statistic.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="275" width="170" height="30" forecolor="#024885" backcolor="#FFFFFF" uuid="8af51acd-1cc5-44bc-a12a-1e1043abb9de"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[data e ora del primo
+accesso al sistema ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement mode="Opaque" x="120" y="305" width="170" height="65" forecolor="#024885" backcolor="#FFFFFF" uuid="7ed913a9-8b04-40c7-905b-4e2229ede80a"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{min_data_login}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="250" width="170" height="25" forecolor="#024885" backcolor="#FFFFFF" uuid="be9de17d-6024-46a7-995a-b4e0ada0944b"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Primo Accesso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="425" y="250" width="170" height="25" forecolor="#024885" backcolor="#FFFFFF" uuid="f0390c74-1a87-44e1-96ed-5905985bf1e3"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ultimo Accesso]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement mode="Opaque" x="425" y="305" width="170" height="65" forecolor="#024885" backcolor="#FFFFFF" uuid="311f83f9-0e95-4e16-a707-882a720e8a70"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{max_data_login}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="425" y="275" width="170" height="30" forecolor="#024885" backcolor="#FFFFFF" uuid="06761ee6-3c7c-482d-b685-a662e40a6d25"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[data e ora dell'ultimo
+accesso al sistema ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="730" y="250" width="170" height="25" forecolor="#024885" backcolor="#FFFFFF" uuid="756bc870-383f-4dc0-b074-aaa16e1d24f3"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Accessi/Giorno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="730" y="275" width="170" height="30" forecolor="#024885" backcolor="#FFFFFF" uuid="37758b71-78c0-44ca-b6fd-af76b25caf22"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[numero medio di
+accessi per giorno]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement mode="Opaque" x="730" y="305" width="170" height="65" forecolor="#024885" backcolor="#FFFFFF" uuid="41a9f7d4-4399-474c-98a6-610cef7c9f56"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_login_day}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="840" y="0" width="60" height="40" forecolor="#FFFFFF" backcolor="#024885" uuid="8419dc0b-0460-4c26-8569-5bc5e1afefa2"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#024885"/>
+					<leftPen lineWidth="0.25" lineColor="#024885"/>
+					<bottomPen lineWidth="0.25" lineColor="#024885"/>
+					<rightPen lineWidth="0.25" lineColor="#024885"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="8" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[RPT-CA-001]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

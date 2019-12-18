@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REPORT_OLD_subreport1" language="groovy" pageWidth="800" pageHeight="45" columnWidth="800" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="015bd544-6bed-4166-a26d-600075cfdd6a">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM view_rep_pma_building_pole
+ORDER BY descr_pole]]>
+	</queryString>
+	<field name="pk_sequ_pole" class="java.lang.Integer"/>
+	<field name="cod_pole" class="java.lang.String"/>
+	<field name="descr_pole" class="java.lang.String"/>
+	<field name="num_building_pole_edi" class="java.lang.Integer"/>
+	<field name="num_building_pole_ter" class="java.lang.Integer"/>
+	<field name="num_building_pole_inf" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="550" y="0" width="125" height="25" forecolor="#666666" backcolor="#F2F2F2" uuid="cc54fd6b-d956-4532-bf49-47c53a6f7fff"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Infrastrutture]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="425" y="0" width="125" height="25" forecolor="#666666" backcolor="#F2F2F2" uuid="6fc278c1-be73-4b2e-90c8-f109186e6f39"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Edifici]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="300" height="25" forecolor="#666666" backcolor="#F2F2F2" uuid="64718d72-5c93-4d0a-a2dd-2ca37db6f73c"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Polo Direzionale]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="675" y="0" width="125" height="25" forecolor="#666666" backcolor="#F2F2F2" uuid="4e0276ff-1ece-4a09-b41c-f18050abc2dc"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Terreni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="300" y="0" width="125" height="25" forecolor="#666666" backcolor="#F2F2F2" uuid="e6d06547-af34-480a-b387-b6b92f4d620a"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N. Immobili]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="300" height="20" forecolor="#666666" uuid="bfa1f58d-9a46-45f6-ad34-afbe03e09db8"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descr_pole}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="0" width="125" height="20" forecolor="#666666" uuid="941b0e2c-3bd5-45c3-869c-f44ebbf8bcc1"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_building_pole_edi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="0" width="125" height="20" forecolor="#666666" uuid="48833c23-2660-47ee-8105-2db3c097b231"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_building_pole_inf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="675" y="0" width="125" height="20" forecolor="#666666" uuid="8d8c38f4-204f-44bc-b740-2ff1fea724aa"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_building_pole_ter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="125" height="20" forecolor="#666666" uuid="ee98ca68-365a-46df-b749-4e9128ae81b0"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#666666"/>
+					<leftPen lineWidth="0.25" lineColor="#666666"/>
+					<bottomPen lineWidth="0.25" lineColor="#666666"/>
+					<rightPen lineWidth="0.25" lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_building_pole_edi} + $F{num_building_pole_ter} + $F{num_building_pole_inf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

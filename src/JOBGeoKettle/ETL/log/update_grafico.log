@@ -1,0 +1,42 @@
+INFO  02-10 17:32:29,151 - Kitchen - Start of run.
+INFO  02-10 17:32:30,718 - Using "C:\Users\ADMINI~1\AppData\Local\Temp\4\vfs_cache" as temporary files store.
+INFO  02-10 17:32:31,179 - Job-Catasto_grafico_solo inserimenti - Starting entry [Popola-cat_grafico_fogli]
+INFO  02-10 17:32:31,179 - Popola-cat_grafico_fogli - Loading transformation from XML file [file:///C:/ETL/job_catasto_e_mappe/Popola-cat_grafico_fogli.ktr]
+INFO  02-10 17:32:31,480 - Popola-cat_grafico_fogli - Dispatching started for transformation [Popola-cat_grafico_fogli]
+INFO  02-10 17:32:31,672 - Popola-cat_grafico_fogli - This transformation can be replayed with replay date: 2019/10/02 17:32:31
+INFO  02-10 17:32:32,324 - scrivi in cat_grafico_fogli.0 - Connected to database [city4_data] (commit=50000)
+INFO  02-10 17:32:35,299 - leggi da MW_CAT_FOGLI.0 - Finished reading query, closing connection.
+INFO  02-10 17:32:35,310 - leggi da MW_CAT_FOGLI.0 - Finished processing (I=403, O=0, R=0, W=403, U=0, E=0)
+INFO  02-10 17:32:37,070 - scrivi in cat_grafico_fogli.0 - Finished processing (I=0, O=403, R=403, W=403, U=0, E=0)
+INFO  02-10 17:32:37,126 - Job-Catasto_grafico_solo inserimenti - Starting entry [Popola-cat_grafico_particelle]
+INFO  02-10 17:32:37,126 - Popola-cat_grafico_particelle - Loading transformation from XML file [file:///c:/etl/job_catasto_e_mappe/Popola-cat_grafico_particelle.ktr]
+INFO  02-10 17:32:37,191 - Popola-cat_grafico_particelle - Dispatching started for transformation [Popola-cat_grafico_particelle]
+INFO  02-10 17:32:37,192 - Popola-cat_grafico_particelle - This transformation can be replayed with replay date: 2019/10/02 17:32:37
+INFO  02-10 17:32:37,237 - scrivi in cat_grafico_particelle.0 - Connected to database [city4_data] (commit=50000)
+INFO  02-10 17:33:22,866 - leggi da MW_CAT_PARTICELLE.0 - linenr 50000
+INFO  02-10 17:33:33,762 - scrivi in cat_grafico_particelle.0 - linenr 50000
+INFO  02-10 17:34:08,454 - leggi da MW_CAT_PARTICELLE.0 - linenr 100000
+INFO  02-10 17:34:16,651 - scrivi in cat_grafico_particelle.0 - linenr 100000
+INFO  02-10 17:34:48,966 - leggi da MW_CAT_PARTICELLE.0 - linenr 150000
+INFO  02-10 17:34:56,556 - scrivi in cat_grafico_particelle.0 - linenr 150000
+INFO  02-10 17:35:20,260 - leggi da MW_CAT_PARTICELLE.0 - Finished reading query, closing connection.
+INFO  02-10 17:35:20,265 - leggi da MW_CAT_PARTICELLE.0 - Finished processing (I=190402, O=0, R=0, W=190402, U=0, E=0)
+INFO  02-10 17:35:26,646 - scrivi in cat_grafico_particelle.0 - Finished processing (I=0, O=190402, R=190402, W=190402, U=0, E=0)
+INFO  02-10 17:35:26,697 - Job-Catasto_grafico_solo inserimenti - Starting entry [Popola-cat_grafico_linee]
+INFO  02-10 17:35:26,697 - Popola-cat_grafico_linee - Loading transformation from XML file [file:///c:/ETL/job_catasto_e_mappe/Popola-cat_grafico_linee.ktr]
+INFO  02-10 17:35:26,732 - Popola-cat_grafico_linee - Dispatching started for transformation [Popola-cat_grafico_linee]
+INFO  02-10 17:35:26,733 - Popola-cat_grafico_linee - This transformation can be replayed with replay date: 2019/10/02 17:35:26
+INFO  02-10 17:35:26,779 - scrivi in cat_grafico_linee.0 - Connected to database [city4_data] (commit=50000)
+INFO  02-10 17:35:44,147 - leggi da MW_CAT_LINEE.0 - linenr 50000
+INFO  02-10 17:35:48,064 - scrivi in cat_grafico_linee.0 - linenr 50000
+INFO  02-10 17:36:04,506 - leggi da MW_CAT_LINEE.0 - linenr 100000
+INFO  02-10 17:36:06,861 - leggi da MW_CAT_LINEE.0 - Finished reading query, closing connection.
+INFO  02-10 17:36:06,862 - leggi da MW_CAT_LINEE.0 - Finished processing (I=106181, O=0, R=0, W=106181, U=0, E=0)
+INFO  02-10 17:36:08,255 - scrivi in cat_grafico_linee.0 - linenr 100000
+INFO  02-10 17:36:10,586 - scrivi in cat_grafico_linee.0 - Finished processing (I=0, O=106181, R=106181, W=106181, U=0, E=0)
+INFO  02-10 17:36:10,633 - Job-Catasto_grafico_solo inserimenti - Finished job entry [Popola-cat_grafico_linee] (result=[true])
+INFO  02-10 17:36:10,633 - Job-Catasto_grafico_solo inserimenti - Finished job entry [Popola-cat_grafico_particelle] (result=[true])
+INFO  02-10 17:36:10,633 - Job-Catasto_grafico_solo inserimenti - Finished job entry [Popola-cat_grafico_fogli] (result=[true])
+INFO  02-10 17:36:10,635 - Kitchen - Finished!
+INFO  02-10 17:36:10,635 - Kitchen - Start=2019/10/02 17:32:30.897, Stop=2019/10/02 17:36:10.635
+INFO  02-10 17:36:10,635 - Kitchen - Processing ended after 3 minutes and 39 seconds (219 seconds total).
