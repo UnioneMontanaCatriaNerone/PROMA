@@ -11,7 +11,7 @@ description:
   it:
     features:
       - Verifica dell'inventario
-      - Fascicolo Immobiliare
+      - Fascicolo immobiliare
       - WebApp per la consultazione dei temi del patrimonio immobiliare
       - Configurazioni
     genericName: PROMA
@@ -36,7 +36,7 @@ description:
       PROMA è la soluzione di property management a supporto delle attività di
       gestione e di valorizzazione del patrimonio immobiliare degli Enti
       Pubblici
-developmentStatus: obsolete
+developmentStatus: stable
 it:
   conforme:
     gdpr: false
@@ -63,7 +63,7 @@ maintenance:
     - email: gianluca.cespuglio@cm-cagli.ps.it
       name: Gianluca Cespuglio
   type: internal
-name: Proma-Property Managment
+name: Proma-Property Management
 platforms:
   - web
 releaseDate: '2019-12-18'
